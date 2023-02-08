@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="autoalter_menu_root" name="Auto-Alter">
+        <menuitem id="autoalter_first_level_menu" name="Advertisement">
+            <menuitem id="estate_property_menu_action" action="autoalter_vehicles_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

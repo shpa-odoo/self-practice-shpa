@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+autoalter.access_autoalter_vehicles,access_autoalter_vehicles,autoalter.model_autoalter_vehicles,base.group_user,1,1,1,1
