@@ -1,0 +1,7 @@
+<odoo>
+    <record id="autoalter_auction_action" model="ir.actions.act_window">
+        <field name="name">Auction</field>
+        <field name="res_model">autoalter.auction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

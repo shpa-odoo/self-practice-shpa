@@ -1,0 +1,7 @@
+<odoo>
+    <record id="autoalter_design_action" model="ir.actions.act_window">
+        <field name="name">Designs</field>
+        <field name="res_model">autoalter.design</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

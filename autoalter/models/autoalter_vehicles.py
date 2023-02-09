@@ -4,7 +4,7 @@ from odoo import models,fields
 class AutoalterVehicles(models.Model):
     _name='autoalter.vehicles'
     _description='show vehicles'
-    vehicle_img=fields.Image()
+    vehicle_img=fields.Image(string="Vehicle Image")
     comp_name=fields.Char(string="Company Name")
     vehicle_type=fields.Selection(selection=[('4-wheelers','4-Wheelers'),
         ('2-wheelers','2-Wheelers'),
@@ -17,4 +17,4 @@ class AutoalterVehicles(models.Model):
         required=True)
     price=fields.Integer(string="Price")
     description=fields.Char(string="Discription")
-
+    

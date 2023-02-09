@@ -1,0 +1,7 @@
+<odoo>
+    <record id="autoalter_customizer_action" model="ir.actions.act_window">
+        <field name="name">Customizer</field>
+        <field name="res_model">autoalter.customizer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
