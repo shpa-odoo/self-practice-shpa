@@ -9,12 +9,13 @@
         <field name="model">autoalter.vehicles</field>
         <field name="arch" type="xml">
             <tree string="Vehicles">
-                <field name="vehicle_img"/>
                 <field name="comp_name"/>
+                <field name="veh_price"/>
+                <field name="engine_type"/>
                 <field name="vehicle_type"/>
-                <field name="model"/>
-                <field name="price"/>
-                <field name="description"/>
+                <field name="trans_type"/>
+                <field name="fuel_type"/>
+                <field name="seat_capcty"/>
             </tree>
         </field>
     </record>
@@ -24,34 +25,75 @@
         <field name="arch" type="xml">
             <form string="Vehicles">
                 <sheet>
-                    
-                    
                     <group>
-                        
-                        <field name="vehicle_img"/>
-                        <group col="2">
-                            <group>
-                                <field name="comp_name"/>
-                                <field name="model"/>
-                            </group>
-                          
-                            <group>
-                                <field name="vehicle_type"/>
-                                <field name="price"/>
-                            </group>
+                        <group>
+                            <field name="vehicle_img" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="comp_name"/>
+                            <field name="model"/>
+                            <field name="vehicle_type"/>
+                            <field name="veh_price"/>  
                         </group>
                     </group>
-                    <separator/>
+                    <seperator/>
                     <notebook>
-                        <page string="Description">
-
+                        <page string="Engine">
                             <group>
-                                <separator/>
-                                <field name="description"/>
-                                
-                                
+                                <field name="engine_type"/>
+                                <field name="displacement"/>
+                                <field name="max_power"/>
+                                <field name="max_torque"/>
+                                <field name="no_cylinder"/>
+                                <field name="trans_type"/>
+                                <field name="gear_box"/>
                             </group>
-
+                        </page>
+                        <page string="Fuel and Performance">
+                            <group>
+                                <field name="fuel_type"/>
+                                <field name="mileage"/>
+                                <field name="tank_cap"/>
+                                <field name="other_fuel_type"/>
+                            </group>
+                        </page>
+                        <page string="Suspension,Streering and Break">
+                            <group>
+                                <field name="f_suspen"/>
+                                <field name="r_suspen"/>
+                                <field name="ster_col"/>
+                                <field name="turn_rad"/>
+                                <field name="f_break_typ"/>
+                                <field name="r_break_typ"/>
+                            </group>
+                        </page>
+                        <page string="Dimension and Capacity">
+                            <group>
+                                <field name="length"/>
+                                <field name="width"/>
+                                <field name="height"/>
+                                <field name="seat_capcty"/>
+                                <field name="wheelbase"/>
+                                <field name="kerb_weight"/>
+                                <field name="no_door"/>
+                            </group>
+                        </page>
+                        <page string="Interior">
+                        </page>
+                        <page string="Exterior">
+                            <group>
+                                <field name="tyre_size"/>
+                                <field name="tyre_typ"/>
+                                <field name="wheel_size"/>
+                            </group>
+                        </page>
+                        <page string="Comfort">
+                        </page>
+                        <page string="Safety">
+                        </page>
+                        <page string="Entertainment">
+                        </page>
+                        <page string="Company info">
                         </page>
                     </notebook>
                 </sheet>

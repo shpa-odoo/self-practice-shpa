@@ -4,4 +4,41 @@
         <field name="res_model">autoalter.auction</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="autoalter_auction_view_tree" model="ir.ui.view">
+        <field name="name">autoalter.auction.tree</field>
+        <field name="model">autoalter.auction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="owner_name"/>
+                <field name="date_purchase"/>
+                <field name="start_price"/>
+                <field name="date_time"/>
+                <field name="used_year"/>
+                <field name="fuel_type"/>
+                <field name="travel_dis"/>
+                <field name="eng"/>
+                <field name="insurance"/>
+            </tree>
+        </field>
+    </record>
+    <record id="autoalter_auction_view_form" model="ir.ui.view">
+        <field name="name">autoalter.auction.form</field>
+        <field name="model">autoalter.auction</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <filed name="auct_vhl_img"/>
+                        </group>
+                        <group>
+                            <field name="owner_name"/>
+                            <field name="date_purchase"/>
+                            <field name="start_price"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>

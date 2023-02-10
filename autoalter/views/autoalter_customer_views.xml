@@ -4,4 +4,35 @@
         <field name="res_model">autoalter.customer</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="autoalter_customer_view_tree" model="ir.ui.view">
+        <field name="name">autoalter.customer.tree</field>
+        <field name="model">autoalter.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_name"/>
+                <field name="user_email"/>
+                <field name="user_no"/>
+            </tree>
+        </field>
+    </record>
+    <record id="autoalter_customer_view_form" model="ir.ui.view">
+        <field name="name">autoalter.customer.form</field>
+        <field name="model">autoalter.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_veh_img" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="user_name"/>
+                            <field name="user_email"/>
+                            <field name="user_no"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>
