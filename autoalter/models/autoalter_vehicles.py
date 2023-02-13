@@ -1,5 +1,6 @@
 
 from odoo import models,fields
+from datetime import datetime
 
 class AutoalterVehicles(models.Model):
     _name='autoalter.vehicles'
@@ -43,4 +44,16 @@ class AutoalterVehicles(models.Model):
     tyre_size=fields.Char(string="Tyre Size")
     tyre_typ=fields.Char(string="Tyre Type")
     wheel_size=fields.Integer(string="Wheel Size(rim)")
+    cmp_add=fields.Char(string="Address")
+    cmp_email=fields.Char(string="Email id")
+    cmp_contact=fields.Integer(string="Contact no")
+    cmp_year=fields.Selection(selection='years_selection',
+        string="Year of Origin")
+    def years_selection(self):
+        year_list=[]
+        for y in range(datetime.now().year-50, datetime.now().year):
+            year_list.append((str(y), str(y)))
+        return year_list
+
+    cun_origin=fields.Char(string="Country of Origin")
     

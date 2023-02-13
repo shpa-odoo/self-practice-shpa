@@ -22,17 +22,22 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
+                    <label for="cust_name"/>
+                    <h1>
+                        <field name="cust_name" nolabel="1"/>
+                    </h1>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="cust_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                    <div style="margin-top:30px">
                         <group>
-                            <field name="cust_img" widget="image"/>
-                        </group>
-                        <group>
-                            <field name="cust_name"/>
+                            
                             <field name="cust_emial"/>
                             <field name="cust_no"/>
                             <field name="cust_exp"/>
+                    
                         </group>
-                    </group>
+                    </div>
                 </sheet>
             </form>
         </field>

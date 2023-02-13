@@ -5,10 +5,11 @@ class AutoalterAuction(models.Model):
     _description='show auction list'
     
     owner_name=fields.Char(string="Owner name")
-    auct_vhl_img=fields.Image(string="Vehicle Image")
+    auct_vhl_img=fields.Binary(string="Vehicle Image")
     date_purchase=fields.Date(string="Date of Purchase")
     start_price=fields.Float(string="Starting price")
     date_time=fields.Datetime(string="Auction date and time")
+    own_mail=fields.Char(string="Owner Email id")
     transmission=fields.Char(string="Transmission type")
     used_year=fields.Integer(string="Used year")
     fuel_type=fields.Selection(string="Fuel Type",

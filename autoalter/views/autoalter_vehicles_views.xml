@@ -40,13 +40,17 @@
                     <notebook>
                         <page string="Engine">
                             <group>
+                                <group>
                                 <field name="engine_type"/>
                                 <field name="displacement"/>
                                 <field name="max_power"/>
                                 <field name="max_torque"/>
+                                </group>
+                                <group>
                                 <field name="no_cylinder"/>
                                 <field name="trans_type"/>
                                 <field name="gear_box"/>
+                                </group>
                             </group>
                         </page>
                         <page string="Fuel and Performance">
@@ -59,41 +63,58 @@
                         </page>
                         <page string="Suspension,Streering and Break">
                             <group>
+                                <group>
                                 <field name="f_suspen"/>
                                 <field name="r_suspen"/>
                                 <field name="ster_col"/>
+                                </group>
+                                <group>
                                 <field name="turn_rad"/>
                                 <field name="f_break_typ"/>
                                 <field name="r_break_typ"/>
+                                </group>
                             </group>
                         </page>
                         <page string="Dimension and Capacity">
                             <group>
-                                <field name="length"/>
-                                <field name="width"/>
-                                <field name="height"/>
-                                <field name="seat_capcty"/>
-                                <field name="wheelbase"/>
-                                <field name="kerb_weight"/>
-                                <field name="no_door"/>
+                                <group>
+                                    <field name="length"/>
+                                    <field name="width"/>
+                                    <field name="height"/>
+                                    <field name="seat_capcty"/>
+                                </group>
+                                <group>
+                                    <field name="wheelbase"/>
+                                    <field name="kerb_weight"/>
+                                    <field name="no_door"/>
+                                </group>
                             </group>
                         </page>
-                        <page string="Interior">
+                        <page string="Exterior and Interior">
+                            <div style="margin-top:30px">
+                                <group>
+                                    <field name="tyre_size"/>
+                                    <field name="tyre_typ"/>
+                                    <field name="wheel_size"/>
+                                </group>
+                            </div>
                         </page>
-                        <page string="Exterior">
-                            <group>
-                                <field name="tyre_size"/>
-                                <field name="tyre_typ"/>
-                                <field name="wheel_size"/>
-                            </group>
-                        </page>
-                        <page string="Comfort">
-                        </page>
-                        <page string="Safety">
-                        </page>
-                        <page string="Entertainment">
+                        <page string="Features">
                         </page>
                         <page string="Company info">
+                            <div style="margin-top:30px">
+                                <group>
+                                    <group>
+                                        <field name="cmp_add"/>
+                                        <field name="cmp_email"/>
+                                        <field name="cmp_contact"/>
+                                    </group>
+                                    <group>
+                                        <field name="cmp_year"/>
+                                        <field name="cun_origin"/>
+                                    </group>
+                                </group>
+                            </div>
                         </page>
                     </notebook>
                 </sheet>

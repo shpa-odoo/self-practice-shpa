@@ -21,16 +21,21 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <group>
-                            <field name="user_veh_img" widget="image"/>
-                        </group>
+                    <label for="user_name"/>
+                    <h1>
+                        <field name="user_name" nolabel="1"/>
+
+                    </h1>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="user_veh_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                    <div style="margin-top:30px">
                         <group>
                             <field name="user_name"/>
                             <field name="user_email"/>
                             <field name="user_no"/>
                         </group>
-                    </group>
+                    </div>
                 </sheet>
             </form>
         </field>
