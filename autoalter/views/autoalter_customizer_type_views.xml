@@ -1,0 +1,26 @@
+<odoo>
+    <record id="autoalter_customizer_type_view_tree" model="ir.ui.view">
+        <field name="name">autoalter.customizer.type.tree</field>
+        <field name="model">autoalter.customizer.type</field>
+        <field name="arch" type="xml">
+            <tree string="Customizer Types">
+                <field name="customizer_typ"/>
+            </tree>
+        </field>
+    </record>
+    <record id="autoalter_customizer_type_view_form" model="ir.ui.view">
+        <field name="name">autoalter.customizer.type.form</field>
+        <field name="model">autoalter.customizer.type</field>
+        <field name="arch" type="xml">
+            <form string="Coustomizer Types">
+                <sheet>
+                    <h1>
+                        <group>
+                            <field name="customizer_typ"/>
+                        </group>
+                    </h1>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

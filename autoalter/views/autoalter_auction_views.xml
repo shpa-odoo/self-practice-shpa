@@ -58,7 +58,6 @@
                             <div style="margin-top:30px">
                             <group>
                                 <group>
-                                    <field name="features"/>
                                     <field name="registration"/>
                                     <field name="register_in"/>
                                     <field name="mfg_year"/>
@@ -75,6 +74,9 @@
                                 </group>
                             </group>
                             </div>
+                        </page>
+                        <page string="features">
+                            <field name="add_feature_ids"/>
                         </page>
                         <page string="Quality">
                             <div style="margin-top:30px">

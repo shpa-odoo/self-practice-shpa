@@ -7,21 +7,22 @@ class AutoalterAuction(models.Model):
     owner_name=fields.Char(string="Owner name")
     auct_vhl_img=fields.Binary(string="Vehicle Image")
     date_purchase=fields.Date(string="Date of Purchase")
-    start_price=fields.Float(string="Starting price")
+    start_price=fields.Char(string="Starting price")
     date_time=fields.Datetime(string="Auction date and time")
     own_mail=fields.Char(string="Owner Email id")
     transmission=fields.Char(string="Transmission type")
-    used_year=fields.Integer(string="Used year")
+    used_year=fields.Char(string="Used year")
     fuel_type=fields.Selection(string="Fuel Type",
         selection=[('petrol','Petrol'),('disel','Disel'),('lpg','LPG'),('cng','CNG')])
-    travel_dis=fields.Integer(string="Traveled Distance(km)")
-    features=fields.Text(string="Features")
+    travel_dis=fields.Char(string="Traveled Distance(km)")
+    #features=fields.Text(string="Features")
+
     registration=fields.Date(string="Registration date")
     register_in=fields.Date(string="Registrated in")
-    mfg_year=fields.Integer(string="Manufacturing Year")
+    mfg_year=fields.Char(string="Manufacturing Year")
     eng=fields.Char(string="engine Type")
     insurance=fields.Boolean(string="Insurance(true/false)")
-    ttl_owner=fields.Integer(string="Total Owner")
+    ttl_owner=fields.Char(string="Total Owner")
     road_tax=fields.Selection(selection=[('paid','Paid'),('not paid','not Paid')],
         string="Road Tax")
     org_rc=fields.Selection(selection=[('available','Available'),('not available','not Available')],
@@ -41,3 +42,5 @@ class AutoalterAuction(models.Model):
         string="Tyre")
     exterior=fields.Selection(selection=[('good','Good'),('default','Default')],
         string="Interior $ Electronic")
+
+    add_feature_ids=fields.One2many('autoalter.feature','feature_id',string="Add features")

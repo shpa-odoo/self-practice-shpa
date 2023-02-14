@@ -12,6 +12,7 @@
                 <field name="user_name"/>
                 <field name="user_email"/>
                 <field name="user_no"/>
+                <field name="select_cust_ids"/>
             </tree>
         </field>
     </record>
@@ -36,6 +37,11 @@
                             <field name="user_no"/>
                         </group>
                     </div>
+                    <notebook>
+                        <page string="Customizers">
+                            <field name="select_cust_ids"/>
+                        </page>
+                </notebook>
                 </sheet>
             </form>
         </field>

@@ -10,10 +10,10 @@
         <field name="arch" type="xml">
             <tree string="Designs">
                 <field name="design_img"/>
-                <field name="des_name"/>
+                <field name="des_name_id"/>
                 <field name="des_price"/>
                 <field name="des_gmail"/>
-            </tree>
+            </tree> 
         </field>
     </record>
     <record id="autoalter_design_view_form" model="ir.ui.view">
@@ -27,7 +27,7 @@
                             <field name="design_img" widget="image"/>
                         </group>
                         <group>
-                            <field name="des_name"/>
+                            <field name="des_name_id"/>
                             <field name="des_price"/>
                             <field name="des_gmail"/>
                         </group>

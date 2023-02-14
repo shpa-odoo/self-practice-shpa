@@ -13,6 +13,9 @@
                 <field name="cust_emial"/>
                 <field name="cust_no"/>
                 <field name="cust_exp"/>
+                <field name="cust_avil"/>
+                <field name="cust_typ_ids"/>
+                <field name="cust_id"/>
             </tree>
         </field>
     </record>
@@ -31,13 +34,16 @@
                     </div>
                     <div style="margin-top:30px">
                         <group>
-                            
+                            <field name="cust_avil"/>
                             <field name="cust_emial"/>
                             <field name="cust_no"/>
                             <field name="cust_exp"/>
-                    
+                            <field name="cust_typ_ids" widget="many2many_tags"/>
+                            <field name="cust_id"/>
                         </group>
+                        
                     </div>
+                    
                 </sheet>
             </form>
         </field>

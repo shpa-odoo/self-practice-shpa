@@ -93,13 +93,20 @@
                         <page string="Exterior and Interior">
                             <div style="margin-top:30px">
                                 <group>
-                                    <field name="tyre_size"/>
-                                    <field name="tyre_typ"/>
-                                    <field name="wheel_size"/>
+                                    <group>
+                                        <field name="tyre_size"/>
+                                        <field name="tyre_typ"/>
+                                        <field name="wheel_size"/>
+                                    </group>
+                                    <group>
+                                        <field name="interior_ids" widget="many2many_tags"/>
+                                        <field name="exterior_ids" widget="many2many_tags"/>
+                                    </group>
                                 </group>
                             </div>
                         </page>
                         <page string="Features">
+                            <field name="feature_ids"/>
                         </page>
                         <page string="Company info">
                             <div style="margin-top:30px">
