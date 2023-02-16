@@ -12,7 +12,11 @@
                 <field name="user_name"/>
                 <field name="user_email"/>
                 <field name="user_no"/>
-                <field name="select_cust_ids"/>
+                <field name="user_price"/>
+                <field name="user_discrip"/>
+                <button name="action_select" type="object" icon="fa-check" title="Select"/>
+                <button name="action_cancle" type="object" icon="fa-close" title="Cancle"/>
+                <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
             </tree>
         </field>
     </record>
@@ -30,16 +34,23 @@
                     <div style="position: absolute;right: 40px;top:15px">
                         <field name="user_veh_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
                     </div>
+                    <hr style="margin-top:30px"/>
                     <div style="margin-top:30px">
                         <group>
-                            <field name="user_name"/>
-                            <field name="user_email"/>
-                            <field name="user_no"/>
+                            <group>
+                                <field name="user_name"/>
+                                <field name="user_email"/>
+                                <field name="user_no"/>
+                            </group>
+                            <group>
+                                <field name="user_price"/>
+                                <field name="user_discrip"/>
+                            </group>
                         </group>
                     </div>
                     <notebook>
                         <page string="Customizers">
-                            <field name="select_cust_ids"/>
+                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
                         </page>
                 </notebook>
                 </sheet>

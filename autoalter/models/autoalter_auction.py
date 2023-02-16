@@ -3,6 +3,7 @@ from odoo import models,fields
 class AutoalterAuction(models.Model):
     _name='autoalter.auction'
     _description='show auction list'
+    _rec_name="owner_name"
     
     owner_name=fields.Char(string="Owner name")
     auct_vhl_img=fields.Binary(string="Vehicle Image")
@@ -43,4 +44,4 @@ class AutoalterAuction(models.Model):
     exterior=fields.Selection(selection=[('good','Good'),('default','Default')],
         string="Interior $ Electronic")
 
-    add_feature_ids=fields.One2many('autoalter.feature','feature_id',string="Add features")
+    add_feature_ids=fields.Many2many('autoalter.feature',string="Add features")

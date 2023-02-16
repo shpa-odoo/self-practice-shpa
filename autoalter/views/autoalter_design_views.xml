@@ -9,7 +9,7 @@
         <field name="model">autoalter.design</field>
         <field name="arch" type="xml">
             <tree string="Designs">
-                <field name="design_img"/>
+                <field name="design_img" widget="image"/>
                 <field name="des_name_id"/>
                 <field name="des_price"/>
                 <field name="des_gmail"/>
@@ -21,15 +21,19 @@
         <field name="model">autoalter.design</field>
         <field name="arch" type="xml">
             <form string="Designs">
+                <header>
+                    <button name="action_buy" type="object" class="oe_highlight" string="Buy"/>
+                    
+                </header>
                 <sheet>
                     <group>
-                        <group>
-                            <field name="design_img" widget="image"/>
-                        </group>
                         <group>
                             <field name="des_name_id"/>
                             <field name="des_price"/>
                             <field name="des_gmail"/>
+                        </group>
+                        <group>
+                            <field name="design_img" widget="image"/>
                         </group>
                     </group>
                 </sheet>
