@@ -57,4 +57,18 @@
             </form>
         </field>
     </record>
+    <record id="autoalter_customer_view_search" model="ir.ui.view">
+        <field name="name">autoalter.customer.search</field>
+        <field name="model">autoalter.customer</field>
+        <field name="arch" type="xml">
+            <search string="search..">
+                <field name="user_name"/>
+                <field name="user_price"/>
+                <field name="user_discrip"/>
+                <group string="by user_name">
+                    <filter string="By name" name="by user_name" context="{'group_by':'user_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

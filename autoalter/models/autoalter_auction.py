@@ -41,7 +41,7 @@ class AutoalterAuction(models.Model):
         string="Steering,Suspension & break")
     tyre=fields.Selection(selection=[('new','New'),('old','Old')],
         string="Tyre")
-    exterior=fields.Selection(selection=[('good','Good'),('default','Default')],
+    exterior=fields.Selection(selection=[('good','Good'),('demaged','Demaged')],
         string="Interior $ Electronic")
 
     add_feature_ids=fields.Many2many('autoalter.feature',string="Add features")

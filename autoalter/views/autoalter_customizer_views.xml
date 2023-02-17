@@ -48,4 +48,24 @@
             </form>
         </field>
     </record>
+    <record id="autoalter_customizer_view_search" model="ir.ui.view">
+        <field name="name">autoalter.customizer.search</field>
+        <field name="model">autoalter.customizer</field>
+        <field name="arch" type="xml">
+            <search string="search..">
+                <field name="cust_name"/>
+                <field name="cust_exp"/>
+                <field name="cust_avil"/>
+                <field name="cust_typ_ids"/>
+                <filter string="available" name="cust_avil" domain="[('cust_avil','=','True')]"/>
+                <filter string="Un-available" name="cust_avil" domain="[('cust_avil','=','False')]"/>
+                <group string="by cust_typ_ids">
+                    <filter string="By profession" name="by cust_typ_ids" context="{'group_by':'cust_typ_ids'}"/>
+                </group>
+                <group string="by cust_avil">
+                    <filter string="By Avaibility" name="by cust_avil" context="{'group_by':'cust_avil'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

@@ -40,4 +40,17 @@
             </form>
         </field>
     </record>
+    <record id="autoalter_design_view_search" model="ir.ui.view">
+        <field name="name">autoalter.design.search</field>
+        <field name="model">autoalter.design</field>
+        <field name="arch" type="xml">
+            <search string="Select..">
+                <field name="design_name"/>
+                <field name="des_name_id"/>
+                <group string="by des_name_id">
+                        <filter string="Designer name" name="by des_name_id" context="{'group_by':'des_name_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

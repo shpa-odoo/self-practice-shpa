@@ -8,14 +8,43 @@
         <field name="name">autoalter.vehicles.tree</field>
         <field name="model">autoalter.vehicles</field>
         <field name="arch" type="xml">
-            <tree string="Vehicles">
+            <tree string="Vehicles" expand="1">
                 <field name="comp_name"/>
+                <field name="vehicle_type"/>
+                <field name="model"/>
                 <field name="veh_price"/>
                 <field name="engine_type"/>
-                <field name="vehicle_type"/>
+                <field name="displacement" optional="1"/>
+                <field name="max_power" optional="1"/>
+                <field name="max_torque" optional="1"/>
+                <field name="no_cylinder" optional="1"/>
                 <field name="trans_type"/>
+                <field name="gear_box" optional="1"/>
                 <field name="fuel_type"/>
+                <field name="mileage"/>
+                <field name="tank_cap" optional="1"/>
+                <field name="other_fuel_type" optional="1"/>
+                <field name="f_suspen" optional="1"/>
+                <field name="r_suspen" optional="1"/>
+                <field name="ster_col" optional="1"/>
+                <field name="turn_rad" optional="1"/>
+                <field name="f_break_typ" optional="1"/>
+                <field name="r_break_typ" optional="1"/>
+                <field name="length" optional="1"/>
+                <field name="width" optional="1"/>
+                <field name="height" optional="1"/>
                 <field name="seat_capcty"/>
+                <field name="wheelbase" optional="1"/>
+                <field name="kerb_weight" optional="1"/>
+                <field name="no_door" optional="1"/>
+                <field name="tyre_size" optional="1"/>
+                <field name="tyre_typ" optional="1"/>
+                <field name="wheel_size" optional="1"/>
+                <field name="cmp_add" optional="1"/>
+                <field name="cmp_email" optional="1"/>
+                <field name="cmp_contact" optional="1"/>
+                <field name="cmp_year" optional="1"/>
+                
             </tree>
         </field>
     </record>
@@ -126,6 +155,130 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="autoalter_vehicles_view_search" model="ir.ui.view"> 
+        <field name="name">autoalter.vehicles.search</field>
+        <field name="model">autoalter.vehicles</field>
+        <field name="arch" type="xml">
+
+            <search string="Search..">
+
+                <field name="comp_name"/>
+                <field name="vehicle_type"/>
+                <field name="model"/>
+                <field name="veh_price"/>
+                <field name="engine_type"/>
+                <field name="displacement"/>
+                <field name="max_power"/>
+                <field name="max_torque"/>
+                <field name="no_cylinder"/>
+                <field name="trans_type"/>
+                <field name="gear_box"/>
+                <field name="fuel_type"/>
+                <field name="mileage"/>
+                <field name="tank_cap"/>
+                <field name="other_fuel_type"/>
+                <field name="f_suspen"/>
+                <field name="r_suspen"/>
+                <field name="ster_col"/>
+                <field name="turn_rad"/>
+                <field name="f_break_typ"/>
+                <field name="r_break_typ"/>
+                <field name="length"/>
+                <field name="width"/>
+                <field name="height"/>
+                <field name="seat_capcty"/>
+                <field name="wheelbase"/>
+                <field name="kerb_weight"/>
+                <field name="no_door"/>
+                <field name="tyre_size"/>
+                <field name="tyre_typ"/>
+                <field name="wheel_size"/>
+                <filter string="Scooter" name="vehicle_type" domain="[('vehicle_type', '=' ,'Scooter')]"/>
+                <filter string="Car" name="vehicle_type" domain="[('vehicle_type', '=' ,'Car')]"/>
+                <filter string="Bike" name="vehicle_type" domain="[('vehicle_type', '=' ,'Bike')]"/>
+                <filter string="Truck" name="vehicle_type" domain="[('vehicle_type', '=' ,'Truck')]"/>
+                <filter string="Bicycle" name="vehicle_type" domain="[('vehicle_type', '=' ,'Bicycle')]"/>
+                <filter string="Bus" name="vehicle_type" domain="[('vehicle_type', '=' ,'Bus')]"/>
+                <filter string="Petrol" name="fuel_type" domain="[('fuel_type', '=' ,'Petrol')]"/>
+                <filter string="Disel" name="fuel_type" domain="[('fuel_type', '=' ,'Disel')]"/>
+                <filter string="LPG" name="fuel_type" domain="[('fuel_type', '=' ,'LPG')]"/>
+                <filter string="CNG" name="fuel_type" domain="[('fuel_type', '=' ,'CNG')]"/>
+                <group string="by model">
+                        <filter string="Model" name="by model" context="{'group_by':'model'}"/>
+                </group>
+                <group string="by comp_name">
+                        <filter string="Company name" name="by comp_name" context="{'group_by':'comp_name'}"/>
+                </group>
+                <group string="by vehicle_type">
+                        <filter string="Vehicle Type" name="by vehicle_type" context="{'group_by':'vehicle_type'}"/>
+                </group>
+                <group string="by engine_type">
+                        <filter string="Engine Type" name="by engine_type" context="{'group_by':'engine_type'}"/>
+                </group>
+                <group string="by displacement">
+                        <filter string="Displacement" name="by displacement" context="{'group_by':'displacement'}"/>
+                </group>
+                <group string="by max_power">
+                        <filter string="Power" name="by max_power" context="{'group_by':'max_power'}"/>
+                </group>
+                <group string="by max_torque">
+                        <filter string="Torque" name="by max_torque" context="{'group_by':'max_torque'}"/>
+                </group>
+                <group string="by no_cylinder">
+                        <filter string="Cylinder no" name="by no_cylinder" context="{'group_by':'no_cylinder'}"/>
+                </group>
+                <group string="by trans_type">
+                        <filter string="Transmision type" name="by trans_type" context="{'group_by':'trans_type'}"/>
+                </group>
+                <group string="by gear_box">
+                        <filter string="Gear Box" name="by gear_box" context="{'group_by':'gear_box'}"/>
+                </group>
+                <group string="by fuel_type">
+                        <filter string="Fuel Type" name="by fuel_type" context="{'group_by':'fuel_type'}"/>
+                </group>
+                <group string="by mileage">
+                        <filter string="Mileage(kmpl)" name="by mileage" context="{'group_by':'mileage'}"/>
+                </group>
+                <group string="by tank_cap">
+                        <filter string="Fuel Tank Capacity(liter)" name="by tank_cap" context="{'group_by':'tank_cap'}"/>
+                </group>
+                <group string="by f_suspen">
+                        <filter string="Front Suspension" name="by f_suspen" context="{'group_by':'f_suspen'}"/>
+                </group>
+                <group string="by r_suspen">
+                        <filter string="Rear Suspention" name="by r_suspen" context="{'group_by':'r_suspen'}"/>
+                </group>
+                <group string="by ster_col">
+                        <filter string="Steering Column" name="by ster_col" context="{'group_by':'ster_col'}"/>
+                </group>
+                <group string="by turn_rad">
+                        <filter string="Turning Radius(meter)" name="by turn_rad" context="{'group_by':'turn_rad'}"/>
+                </group>
+                <group string="by f_break_typ">
+                        <filter string="Front Break Type" name="by f_break_typ" context="{'group_by':'f_break_typ'}"/>
+                </group>
+                <group string="by r_break_typ">
+                        <filter string="Rear Break Type" name="by r_break_typ" context="{'group_by':'r_break_typ'}"/>
+                </group>
+                <group string="by seat_capcty">
+                        <filter string="Seating capacity" name="by seat_capcty" context="{'group_by':'seat_capcty'}"/>
+                </group>
+                <group string="by wheelbase">
+                        <filter string="Wheel Base(mm)" name="by wheelbase" context="{'group_by':'wheelbase'}"/>
+                </group>
+                <group string="by kerb_weight">
+                        <filter string="Kerb Weight(kg)" name="by kerb_weight" context="{'group_by':'kerb_weight'}"/>
+                </group>
+                <group string="by no_door">
+                        <filter string="No of Doors" name="by no_door" context="{'group_by':'no_door'}"/>
+                </group>
+                <group string="by wheel_size">
+                        <filter string="Wheel Size(rim)" name="by wheel_size" context="{'group_by':'wheel_size'}"/>
+                </group>
+            </search>
+
         </field>
     </record>
 </odoo>

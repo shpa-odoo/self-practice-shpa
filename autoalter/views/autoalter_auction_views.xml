@@ -13,11 +13,26 @@
                 <field name="date_purchase"/>
                 <field name="start_price"/>
                 <field name="date_time"/>
+                <field name="transmission" optional="1"/>
                 <field name="used_year"/>
                 <field name="fuel_type"/>
                 <field name="travel_dis"/>
+                <field name="registration" optional="1"/>
+                <field name="register_in" optional="1"/>
+                <field name="mfg_year" optional="1"/>
                 <field name="eng"/>
                 <field name="insurance"/>
+                <field name="ttl_owner" optional="1"/>
+                <field name="road_tax" optional="1"/>
+                <field name="org_rc" optional="1"/>
+                <field name="c_p_fit" optional="1"/>
+                <field name="spr_key" optional="1"/>
+                <field name="egn_quality" optional="1"/>
+                <field name="air_conditn" optional="1"/>
+                <field name="interier_ele" optional="1"/>
+                <field name="ssb" optional="1"/>
+                <field name="tyre" optional="1"/>
+                <field name="exterior" optional="1"/>
             </tree>
         </field>
     </record>
@@ -97,6 +112,58 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="autoalter_auction_view_search" model="ir.ui.view">
+        <field name="name">autoalter.auction.search</field>
+        <field name="model">autoalter.auction</field>
+        <field name="arch" type="xml">
+            <search string="search..">
+                <field name="owner_name"/>
+                <field name="date_purchase"/>
+                <field name="start_price"/>
+                <field name="date_time"/>
+                <field name="transmission"/>
+                <field name="used_year"/>
+                <field name="fuel_type"/>
+                <field name="travel_dis"/>
+                <field name="registration"/>
+                <field name="register_in"/>
+                <field name="mfg_year"/>
+                <field name="eng"/>
+                <field name="insurance"/>
+                <field name="ttl_owner"/>
+                <field name="road_tax"/>
+                <field name="org_rc"/>
+                <field name="c_p_fit"/>
+                <field name="spr_key"/>
+                <field name="egn_quality"/>
+                <field name="air_conditn"/>
+                <field name="interier_ele"/>
+                <field name="ssb"/>
+                <field name="tyre"/>
+                <field name="exterior"/>   
+                <filter string="Paid road tax" name="road_tax" domain="[('road_tax','=','Paid')]"/>
+                <filter string="not paid road tax" name="road_tax" domain="[('road_tax','=','not Paid')]"/>
+                <filter string="Have Original rc" name="org_rc" domain="[('org_rc','=','Available')]"/>
+                <filter string="no original rc" name="org_rc" domain="[('org_rc','=','not Available')]"/>
+                <filter string="having CGN/LPG no" name="c_p_fit" domain="[('c_p_fit','=','Yes')]"/>
+                <filter string="No CNG/LPG no" name="c_p_fit" domain="[('c_p_fit','=','No')]"/>
+                <filter string="have sparekey" name="spr_key" domain="[('spr_key','=','Available')]"/>
+                <filter string="no spare key" name="spr_key" domain="[('spr_key','=','not Available')]"/>
+                <filter string="good engine" name="egn_quality" domain="[('egn_quality','=','Smooth Working')]"/>
+                <filter string="average engine" name="egn_quality" domain="[('egn_quality','=','Default')]"/>
+                <filter string="good air conditioner" name="air_conditn" domain="[('air_conditn','=','Smooth Working')]"/>
+                <filter string="working air conditioner" name="air_conditn" domain="[('air_conditn','=','Default')]"/>
+                <filter string="good Interior $ Electronic" name="interier_ele" domain="[('interier_ele','=','Smooth Working')]"/>
+                <filter string="average Interior $ Electronic" name="interier_ele" domain="[('interier_ele','=','Default')]"/> 
+                <filter string="good Steering,Suspension and break" name="ssb" domain="[('ssb','=','Smooth Working')]"/>
+                <filter string="average Steering,Suspension and break" name="ssb" domain="[('ssb','=','Default')]"/>
+                <filter string="new tyre" name="tyre" domain="[('tyre','=','New')]"/>
+                <filter string="old tyre" name="tyre" domain="[('tyre','=','Old')]"/>
+                <filter string="good Exterior" name="exterior" domain="[('exterior','=','')]"/>
+                <filter string="average exterior" name="exterior" domain="[('exterior','=','')]"/>
+            </search>
         </field>
     </record>
 </odoo>

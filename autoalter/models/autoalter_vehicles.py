@@ -5,6 +5,8 @@ from datetime import datetime
 class AutoalterVehicles(models.Model):
     _name='autoalter.vehicles'
     _description='show vehicles'
+    _rec_name="model"
+
     vehicle_img=fields.Image(string="Vehicle Image")
     comp_name=fields.Char(string="Company Name")
     vehicle_type=fields.Selection(selection=[('car','Car'),
@@ -23,7 +25,8 @@ class AutoalterVehicles(models.Model):
     no_cylinder=fields.Char(string="No of Cylinder")
     trans_type=fields.Char(string="Transmission Type")
     gear_box=fields.Char(string="Gear Box")
-    fuel_type=fields.Char(string="Fuel Type")
+    fuel_type=fields.Selection(string="Fuel Type",
+        selection=[('petrol','Petrol'),('disel','Disel'),('lpg','LPG'),('cng','CNG')])
     mileage=fields.Char(string="Mileage(kmpl)")
     tank_cap=fields.Char(string="Fuel Tank Capacity(liter)")
     other_fuel_type=fields.Selection(string="Other Fuel Type",
