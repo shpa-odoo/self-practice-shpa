@@ -15,5 +15,8 @@ class AutoalterCustomizer(models.Model):
     cust_exp=fields.Char(string="Experience(year)")
     cust_typ_ids=fields.Many2many('autoalter.customizer.type',string="Type",
         required=True)
-    cust_id=fields.Many2many('autoalter.customer',string="Customer id")
+    cust_ids=fields.Many2many('autoalter.customer',string="Customer id")
     cust_avil=fields.Boolean(string="Available")
+
+
+    

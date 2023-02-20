@@ -13,7 +13,7 @@ class AutoalterCustomer(models.Model):
     user_price=fields.Char(string="Expected Price")
     user_discrip=fields.Char(string="Discription(design or modification)")
 
-    select_cust_ids=fields.Many2many('autoalter.customizer',string="Select Customizer",store=True)
+    select_cust_ids=fields.Many2many('autoalter.customizer',string="Select Customizer")
 
     def action_select(self):
         if self.select_cust_ids.cust_avil:

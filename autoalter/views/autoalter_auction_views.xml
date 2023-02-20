@@ -163,6 +163,30 @@
                 <filter string="old tyre" name="tyre" domain="[('tyre','=','Old')]"/>
                 <filter string="good Exterior" name="exterior" domain="[('exterior','=','')]"/>
                 <filter string="average exterior" name="exterior" domain="[('exterior','=','')]"/>
+                <group string="by date_purchase">
+                    <filter string="By Purchase Date" name="by date_purchase" context="{'group_by':'date_purchase'}"/>
+                </group>
+                <group string="by start_price">
+                    <filter string="By Starting price" name="by start_price" context="{'group_by':'start_price'}"/>
+                </group>
+                <group string="by date_time">
+                    <filter string="Auction date-time" name="by date_time" context="{'group_by':'date_time'}"/>
+                </group>
+                <group string="by transmission">
+                    <filter string="Transmission type" name="by transmission" context="{'group_by':'transmission'}"/>
+                </group>
+                <group string="by used_year">
+                    <filter string="Used year" name="by used_year" context="{'group_by':'used_year'}"/>
+                </group>
+                <group string="by travel_dis">
+                    <filter string="Traveled distance(km)" name="by travel_dis" context="{'group_by':'travel_dis'}"/>
+                </group>
+                <group string="by mfg_year">
+                    <filter string="Manufacturing Year" name="by mfg_year" context="{'group_by':'mfg_year'}"/>
+                </group>
+                <group string="by eng">
+                    <filter string="Engine" name="by eng" context="{'group_by':'eng'}"/>
+                </group>
             </search>
         </field>
     </record>

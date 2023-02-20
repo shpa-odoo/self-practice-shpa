@@ -14,8 +14,6 @@
                 <field name="user_no"/>
                 <field name="user_price"/>
                 <field name="user_discrip"/>
-                <button name="action_select" type="object" icon="fa-check" title="Select"/>
-                <button name="action_cancle" type="object" icon="fa-close" title="Cancle"/>
                 <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
             </tree>
         </field>
