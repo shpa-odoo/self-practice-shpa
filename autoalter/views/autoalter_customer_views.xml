@@ -35,20 +35,26 @@
                     <hr style="margin-top:30px"/>
                     <div style="margin-top:30px">
                         <group>
-                            <group>
                                 <field name="user_name"/>
                                 <field name="user_email"/>
                                 <field name="user_no"/>
-                            </group>
-                            <group>
-                                <field name="user_price"/>
-                                <field name="user_discrip"/>
-                            </group>
                         </group>
                     </div>
                     <notebook>
                         <page string="Customizers">
+                            <group>
+                                <group>
+                                    <field name="user_discrip"/>
+                                </group>
+                                <group>
+                                    <field name="user_price"/>
+                                </group>
+                            </group>
                             <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
+                        </page>
+                        <page string="Design">
+                        </page>
+                        <page string="Vehicle">
                         </page>
                 </notebook>
                 </sheet>
