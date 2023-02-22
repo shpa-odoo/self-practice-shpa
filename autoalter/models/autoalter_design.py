@@ -22,5 +22,3 @@ class AutoalterDesign(models.Model):
         for record in self:
             record.des_gmail=self.des_name_id.cust_emial
     
-    def action_buy(self):
-        raise odoo.exceptions.UserError("buy")

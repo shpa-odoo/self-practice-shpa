@@ -12,9 +12,8 @@
                 <field name="user_name"/>
                 <field name="user_email"/>
                 <field name="user_no"/>
-                <field name="user_price"/>
-                <field name="user_discrip"/>
-                <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
+                <field name="user_gend"/>
+                <field name="user_birth"/>
             </tree>
         </field>
     </record>
@@ -30,33 +29,17 @@
 
                     </h1>
                     <div style="position: absolute;right: 40px;top:15px">
-                        <field name="user_veh_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                        <field name="user_image" widget="image" class="oe_right oe_avatar" nolabel="1"/>
                     </div>
-                    <hr style="margin-top:30px"/>
-                    <div style="margin-top:30px">
+                    <hr style="margin:3em 0"/>
+                    <div>
                         <group>
-                                <field name="user_name"/>
                                 <field name="user_email"/>
                                 <field name="user_no"/>
+                                <field name="user_gend" widget="radio"/>
+                                <field name="user_birth"/>
                         </group>
                     </div>
-                    <notebook>
-                        <page string="Customizers">
-                            <group>
-                                <group>
-                                    <field name="user_discrip"/>
-                                </group>
-                                <group>
-                                    <field name="user_price"/>
-                                </group>
-                            </group>
-                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
-                        </page>
-                        <page string="Design">
-                        </page>
-                        <page string="Vehicle">
-                        </page>
-                </notebook>
                 </sheet>
             </form>
         </field>
@@ -67,10 +50,12 @@
         <field name="arch" type="xml">
             <search string="search..">
                 <field name="user_name"/>
-                <field name="user_price"/>
-                <field name="user_discrip"/>
+                <field name="user_birth"/>
                 <group string="by user_name">
                     <filter string="By name" name="by user_name" context="{'group_by':'user_name'}"/>
+                </group>
+                <group string="by user_gend">
+                    <filter string="By gender" name="by user_gend" context="{'group_by':'user_gend'}"/>
                 </group>
             </search>
         </field>

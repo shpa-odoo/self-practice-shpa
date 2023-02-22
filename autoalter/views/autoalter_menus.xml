@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <menuitem id="autoalter_menu_root" name="Auto-Alter">
-        <menuitem id="autoalter_first_level_menu" name="Advertisement">
+        <menuitem id="autoalter_first_level_menu" name="Vehicles">
             <menuitem id="autoalter_vehicle_menu_action" action="autoalter_vehicles_action"/>
         </menuitem>
         <menuitem id="autoalter_second_level_menu" name="Design">
@@ -13,6 +13,9 @@
         </menuitem>
         <menuitem id="autoalter_forth_level_menu" name="Auction">
             <menuitem id="autoalter_auction_menu_action" action="autoalter_auction_action"/>
+        </menuitem>
+        <menuitem id="autoalter_fifth_level_menu" name="Orders">
+            <menuitem id="autoalter_order_menu_action" action="autoalter_order_action"/>
         </menuitem>
     </menuitem>
 </odoo>

@@ -14,6 +14,7 @@
         'views/autoalter_exterior_materials_views.xml',
         'views/autoalter_feature_views.xml',
         'views/autoalter_customizer_type_views.xml',
+        'views/autoalter_order_views.xml',
         'views/autoalter_menus.xml' 
     ]
 }

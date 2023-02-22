@@ -1,0 +1,92 @@
+<odoo>
+    <record id="autoalter_order_action" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">autoalter.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="autoalter_order_view_tree" model="ir.ui.view">
+        <field name="name">autoalter.order.tree</field>
+        <field name="model">autoalter.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                
+                <field name="select_customer_id"/>
+                <field name="o_email"/>
+                <field name="o_no"/>
+            </tree>
+        </field>
+    </record>
+    <record id="autoalter_order_view_form" model="ir.ui.view">
+        <field name="name">autoalter.order.form</field>
+        <field name="model">autoalter.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="select_customer_id"/>
+                    <h1>
+                        <field name="select_customer_id" nolabel="1"/>
+
+                    </h1>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="o_image" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                    <hr style="margin:3em 0"/>
+                    <div>
+                        <group>
+                                <field name="o_email"/>
+                                <field name="o_no"/>
+                        </group>
+                    </div>
+                    <div style="margin:1em 0;display:Flex">
+                        
+                        <lable for="buy"/>
+                        
+                        <group name="buy" string="Buy">
+                            <field name="buy_vehicle"/>
+                            <field name="buy_design"/>
+                            <field name="buy_custom"/>
+                        </group>
+                        
+                    </div>
+                    <notebook>
+                        <page string="Customizers" attrs="{'invisible':[('buy_custom','=',False)]}">
+                            <div style="margin-top:3em">
+                            <group>
+                                <group>
+                                    <field name="user_discrip"/>
+                                    <field name="user_price"/>
+                                </group>
+                                <group>
+                                    <field name="user_veh_img" widget="image"/>
+                                </group>
+                            </group>
+                            </div>
+                            <hr style="margin:3em 0"/>
+                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
+                        </page>
+                        <page string="Design" attrs="{'invisible':[('buy_design','=',False)]}">
+                            <field name="select_design_ids"/>
+                        </page>
+                        <page string="Vehicle" attrs="{'invisible':[('buy_vehicle','=',False)]}">
+                            <field name="select_vehicle_ids"/>
+                        </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="autoalter_order_view_search" model="ir.ui.view">
+        <field name="name">autoalter.order.search</field>
+        <field name="model">autoalter.order</field>
+        <field name="arch" type="xml">
+            <search string="search..">
+                <field name="select_customer_id"/>
+                <field name="user_price"/>
+                <field name="user_discrip"/>
+                <group string="by select_customer_id">
+                    <filter string="By name" name="by select_customer_id" context="{'group_by':'select_customer_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

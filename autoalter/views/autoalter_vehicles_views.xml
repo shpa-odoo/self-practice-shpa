@@ -53,6 +53,9 @@
         <field name="model">autoalter.vehicles</field>
         <field name="arch" type="xml">
             <form string="Vehicles">
+                <header>
+                    <button name="%(autoalter.autoalter_order_action)d" type="action" string="Purchase" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <group>

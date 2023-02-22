@@ -22,8 +22,7 @@
         <field name="arch" type="xml">
             <form string="Designs">
                 <header>
-                    <button name="action_buy" type="object" class="oe_highlight" string="Buy"/>
-                    
+                    <button name="%(autoalter.autoalter_order_action)d" type="action" string="Purchase" class="oe_highlight"/>
                 </header>
                 <sheet>
                     <group>

@@ -15,7 +15,7 @@
                 <field name="cust_exp"/>
                 <field name="cust_avil"/>
                 <field name="cust_typ_ids"/>
-                <field name="cust_ids"/>
+                
             </tree>
         </field>
     </record>
@@ -39,15 +39,13 @@
                             <field name="cust_no"/>
                             <field name="cust_exp"/>
                             <field name="cust_typ_ids" widget="many2many_tags"/>
-                            <field name="cust_ids">
+                            <field name="order_ids">
                                 <tree>
-                                    <field name="user_name"/>
-                                    <field name="user_email"/>
-                                    <field name="user_no"/>
-                                    <field name="user_price"/>
+                                    <field name="o_email"/>
                                     <field name="user_discrip"/>
-                                    <button name="action_select" type="object" icon="fa-check" title="Select"/>
-                                    <button name="action_cancle" type="object" icon="fa-close" title="Cancle"/>
+                                    <field name="user_price"/>
+                                    <button name="action_select" title="Accept" type="object" icon="fa-check"/>
+                                    <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>
                                 </tree>
                             </field>
                         </group>
