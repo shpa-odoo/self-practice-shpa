@@ -19,5 +19,12 @@ class AutoalterCustomizer(models.Model):
     
     cust_avil=fields.Boolean(string="Available")
     order_ids=fields.Many2many('autoalter.order',string="Order id")
+    
+    def action_select(self):
+        for record in self:
+            record.cust_avil=False
+        
 
+    def action_cancle(self):
+        raise odoo.exceptions.UserError("record has been canceled")
     

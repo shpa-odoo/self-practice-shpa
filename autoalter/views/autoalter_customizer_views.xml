@@ -43,9 +43,10 @@
                                 <tree>
                                     <field name="o_email"/>
                                     <field name="user_discrip"/>
-                                    <field name="user_price"/>
-                                    <button name="action_select" title="Accept" type="object" icon="fa-check"/>
-                                    <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>
+                                    
+                                    <!--<field name="cust_price" attrs="{'invisible':[('order_ids','=',False)]}"/>-->
+                                    <!--<button name="action_select" title="Accept" type="object" icon="fa-check"/>
+                                    <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>-->
                                 </tree>
                             </field>
                         </group>

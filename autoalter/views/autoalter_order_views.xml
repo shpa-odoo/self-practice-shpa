@@ -3,6 +3,7 @@
         <field name="name">Orders</field>
         <field name="res_model">autoalter.order</field>
         <field name="view_mode">tree,form</field>
+        
     </record>
     <record id="autoalter_order_view_tree" model="ir.ui.view">
         <field name="name">autoalter.order.tree</field>
@@ -13,6 +14,8 @@
                 <field name="select_customer_id"/>
                 <field name="o_email"/>
                 <field name="o_no"/>
+                <field name="user_birth"/>
+                <field name="user_gend"/>
             </tree>
         </field>
     </record>
@@ -31,12 +34,16 @@
                         <field name="o_image" widget="image" class="oe_right oe_avatar" nolabel="1"/>
                     </div>
                     <hr style="margin:3em 0"/>
-                    <div>
+                    <group>
                         <group>
                                 <field name="o_email"/>
                                 <field name="o_no"/>
+                                <field name="user_birth"/>
                         </group>
-                    </div>
+                        <group>
+                                <field name="user_gend" widget="radio"/>
+                        </group>
+                    </group>
                     <div style="margin:1em 0;display:Flex">
                         
                         <lable for="buy"/>
@@ -54,7 +61,7 @@
                             <group>
                                 <group>
                                     <field name="user_discrip"/>
-                                    <field name="user_price"/>
+                                    
                                 </group>
                                 <group>
                                     <field name="user_veh_img" widget="image"/>
@@ -62,7 +69,15 @@
                             </group>
                             </div>
                             <hr style="margin:3em 0"/>
-                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]"/>
+                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]">
+                                <tree>
+                                <field name="cust_name"/>
+                                <field name="cust_emial"/>
+                                <field name="cust_exp"/>
+                                <button name="action_select" title="Accept" type="object" icon="fa-check"/>
+                                <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>
+                                </tree>
+                            </field>
                         </page>
                         <page string="Design" attrs="{'invisible':[('buy_design','=',False)]}">
                             <field name="select_design_ids"/>
@@ -81,10 +96,13 @@
         <field name="arch" type="xml">
             <search string="search..">
                 <field name="select_customer_id"/>
-                <field name="user_price"/>
+                
                 <field name="user_discrip"/>
                 <group string="by select_customer_id">
                     <filter string="By name" name="by select_customer_id" context="{'group_by':'select_customer_id'}"/>
+                </group>
+                <group string="by gender">
+                    <filter string="by gender" name="by user_gend" context="{'group_by':'user_gend'}"/>
                 </group>
             </search>
         </field>
