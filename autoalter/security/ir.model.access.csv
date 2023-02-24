@@ -9,3 +9,4 @@ autoalter.access_autoalter_exterior_materials,access_autoalter_exterior_material
 autoalter.access_autoalter_feature,access_autoalter_feature,autoalter.model_autoalter_feature,base.group_user,1,1,1,1
 autoalter.access_autoalter_customizer_type,access_autoalter_customizer_type,autoalter.model_autoalter_customizer_type,base.group_user,1,1,1,1
 autoalter.access_autoalter_order,access_autoalter_order,autoalter.model_autoalter_order,base.group_user,1,1,1,1
+autoalter.access_autoalter_custprice,access_autoalter_custprice,autoalter.model_autoalter_custprice,base.group_user,1,1,1,1

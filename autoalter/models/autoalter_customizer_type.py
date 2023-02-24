@@ -6,3 +6,4 @@ class AutoalterCustomizerType(models.Model):
     _rec_name='customizer_typ'
 
     customizer_typ=fields.Char(string="Customizer Types")
+    color=fields.Integer(string="Color")

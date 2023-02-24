@@ -24,6 +24,13 @@
         <field name="model">autoalter.order</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_buy" type="object" string="Buy" class="oe_highlight" attrs="{'invisible':[('state','in',('order','buy','new'))]}"/>
+                    <button name="action_buy" type="object" string="Buy" attrs="{'invisible':[('state','not in',('order','buy'))]}"/>
+                    <button name="action_cancle" type="object" string="Cancle" attrs="{'invisible': [('state','=','buy')]}"/>
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="new,order,address,buy" attrs="{'invisible':[('state','in',('buy','canceled'))]}"/>
+                    <field name="stage_id2" widget="statusbar" statusbar_visible="new,order,address,buy" attrs="{'invisible':[('state','in',('order','address','new'))]}"/>
+                </header>
                 <sheet>
                     <label for="select_customer_id"/>
                     <h1>
@@ -47,45 +54,86 @@
                     <div style="margin:1em 0;display:Flex">
                         
                         <lable for="buy"/>
-                        
+                        <group>
                         <group name="buy" string="Buy">
                             <field name="buy_vehicle"/>
                             <field name="buy_design"/>
                             <field name="buy_custom"/>
                         </group>
-                        
+                        <group>
+                            <field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>
+                        </group>
+                        </group>
                     </div>
                     <notebook>
                         <page string="Customizers" attrs="{'invisible':[('buy_custom','=',False)]}">
                             <div style="margin-top:3em">
-                            <group>
                                 <group>
-                                    <field name="user_discrip"/>
-                                    
+                                    <group>
+                                        <field name="user_discrip"/>
+                                        
+                                    </group>
+                                    <group>
+                                        <field name="user_veh_img" widget="image"/>
+                                    </group>
                                 </group>
-                                <group>
-                                    <field name="user_veh_img" widget="image"/>
-                                </group>
-                            </group>
                             </div>
                             <hr style="margin:3em 0"/>
-                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]">
-                                <tree>
+                            <group>
+                            
+                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]" options="{'no_create': True}">
+                                <tree decoration-success="status=='accepted'" decoration-danger="status=='rejected'">
                                 <field name="cust_name"/>
                                 <field name="cust_emial"/>
                                 <field name="cust_exp"/>
-                                <button name="action_select" title="Accept" type="object" icon="fa-check"/>
-                                <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>
+                                <field name="status" invisible="1"/>
+                                
+                                <button name="action_select" title="Accept" type="object" icon="fa-check" attrs="{'invisible':[('status','!=',False)]}"/>
+                                <button name="action_cancle" title="Refuse" type="object" icon="fa-close" attrs="{'invisible':[('status','!=',False)]}"/>
                                 </tree>
                             </field>
+                            </group>
+                            
+                            
+                            <group class="oe_subtotal_footer or_right">
+                                <field name="cust_total_price" readonly="1"/>
+                            </group>
                         </page>
                         <page string="Design" attrs="{'invisible':[('buy_design','=',False)]}">
-                            <field name="select_design_ids"/>
+                            <field name="select_design_ids">
+                                <tree>
+                                    <field name="design_name"/>
+                                    <field name="des_gmail"/>
+                                    <field name="des_price"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer or_right">
+                                <field name="des_total_price" readonly="1"/>
+                            </group>
                         </page>
                         <page string="Vehicle" attrs="{'invisible':[('buy_vehicle','=',False)]}">
-                            <field name="select_vehicle_ids"/>
+                            <field name="select_vehicle_ids">
+                                <tree>
+                                    <field name="comp_name"/>
+                                    <field name="vehicle_type"/>
+                                    <field name="model"/>
+                                    <field name="trans_type"/>
+                                    <field name="seat_capcty"/>
+                                    <field name="fuel_type"/>
+                                    <field name="mileage"/>
+                                    <field name="engine_type"/>
+                                    <field name="veh_price"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer or_right">
+                                <field name="veh_total_price" readonly="1"/>
+                            </group>
                         </page>
-                </notebook>
+                    </notebook>
+                    <hr style="margin-top:4em"/>
+                    <group class="oe_subtotal_footer or_right">
+                        <field name="total_price" readonly="1"/>
+                    </group>
                 </sheet>
             </form>
         </field>

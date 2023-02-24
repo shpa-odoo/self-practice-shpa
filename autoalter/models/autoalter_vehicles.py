@@ -17,7 +17,7 @@ class AutoalterVehicles(models.Model):
         ('bus','Bus')],
         string="Type")
     model=fields.Char(string="Model Name")
-    veh_price=fields.Char(string="Price")
+    veh_price=fields.Float(string="Price")
     engine_type=fields.Char(string="Engine Type")
     displacement=fields.Char(string="Displacement(cc)")
     max_power=fields.Char(string="Max Power")

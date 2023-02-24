@@ -14,7 +14,7 @@
                 <field name="cust_no"/>
                 <field name="cust_exp"/>
                 <field name="cust_avil"/>
-                <field name="cust_typ_ids"/>
+                <field name="cust_typ_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 
             </tree>
         </field>
@@ -38,19 +38,23 @@
                             <field name="cust_emial"/>
                             <field name="cust_no"/>
                             <field name="cust_exp"/>
-                            <field name="cust_typ_ids" widget="many2many_tags"/>
+                            <field name="cust_typ_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                        <group>
+                            
                             <field name="order_ids">
                                 <tree>
                                     <field name="o_email"/>
                                     <field name="user_discrip"/>
-                                    
+                                    <field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>
+                                    <field name="stages" invisible="1"/>   
                                     <!--<field name="cust_price" attrs="{'invisible':[('order_ids','=',False)]}"/>-->
                                     <!--<button name="action_select" title="Accept" type="object" icon="fa-check"/>
                                     <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>-->
                                 </tree>
                             </field>
+                            
                         </group>
-                        
                     </div>
                     
                 </sheet>

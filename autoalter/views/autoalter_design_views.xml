@@ -10,7 +10,7 @@
         <field name="arch" type="xml">
             <tree string="Designs">
                 <field name="design_img" widget="image"/>
-                <field name="des_name_id"/>
+                <field name="design_name_id"/>
                 <field name="des_price"/>
                 <field name="des_gmail"/>
             </tree> 
@@ -27,7 +27,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="des_name_id"/>
+                            <field name="design_name_id"/>
                             <field name="des_price"/>
                             <field name="des_gmail"/>
                         </group>
@@ -45,9 +45,9 @@
         <field name="arch" type="xml">
             <search string="Select..">
                 <field name="design_name"/>
-                <field name="des_name_id"/>
+                <field name="design_name_id"/>
                 <group string="by des_name_id">
-                        <filter string="Designer name" name="by des_name_id" context="{'group_by':'des_name_id'}"/>
+                        <filter string="Designer name" name="by design_name_id" context="{'group_by':'design_name_id'}"/>
                 </group>
             </search>
         </field>

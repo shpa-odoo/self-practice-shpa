@@ -9,16 +9,20 @@ class AutoalterDesign(models.Model):
     design_name=fields.Char(string="Design name")
     design_img=fields.Image(string="Design Image",
         required=True)
-    des_name_id=fields.Many2one('autoalter.customizer',string="Designer Name")
-
+    
     des_price=fields.Float(string="Price",
         required=True)
+    design_name_id=fields.Many2one('autoalter.customizer',string="Designer Name")
+
+    
     des_gmail=fields.Char(string="Gmail",
         required=True,
         compute="_compute_email")
 
-    @api.depends("des_name_id.cust_emial")
+    @api.depends("design_name_id.cust_emial")
     def _compute_email(self):
         for record in self:
-            record.des_gmail=self.des_name_id.cust_emial
+            record.des_gmail=self.design_name_id.cust_emial
+    
+    
     
