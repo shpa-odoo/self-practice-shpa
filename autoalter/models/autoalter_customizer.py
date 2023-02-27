@@ -37,4 +37,4 @@ class AutoalterCustomizer(models.Model):
     def _compute_recieve(self):
         for record in self:
             if self.order_ids:
-                record.status="recieved"
+                record.status="recieve"

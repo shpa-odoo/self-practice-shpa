@@ -16,6 +16,8 @@
                 <field name="o_no"/>
                 <field name="user_birth"/>
                 <field name="user_gend"/>
+                <field name="stages" invisible="1"/>
+                <!--<field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>-->
             </tree>
         </field>
     </record>

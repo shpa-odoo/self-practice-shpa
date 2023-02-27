@@ -51,7 +51,8 @@ class AutoalterOrder(models.Model):
    
     cust_price=fields.Char(string="Expected Price")
     stages=fields.Selection(selection=[('send','Send'),('recieve','Recieve')],
-        compute="_compute_send")
+        compute="_compute_send",
+        default=False)
     des_total_price=fields.Float(string="Design total price",
         default=0,
         compute="_compute_design")
