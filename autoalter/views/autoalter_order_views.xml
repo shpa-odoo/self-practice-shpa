@@ -15,7 +15,7 @@
                 <field name="o_email"/>
                 <field name="o_no"/>
                 <field name="user_birth"/>
-                <field name="user_gend"/>
+                <!--<field name="user_gend"/>-->
                 <field name="stages" invisible="1"/>
                 <!--<field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>-->
             </tree>
@@ -49,9 +49,9 @@
                                 <field name="o_no"/>
                                 <field name="user_birth"/>
                         </group>
-                        <group>
+                        <!-- <group>
                                 <field name="user_gend" widget="radio"/>
-                        </group>
+                        </group> -->
                     </group>
                     <div style="margin:1em 0;display:Flex">
                         
@@ -151,9 +151,9 @@
                 <group string="by select_customer_id">
                     <filter string="By name" name="by select_customer_id" context="{'group_by':'select_customer_id'}"/>
                 </group>
-                <group string="by gender">
+                <!-- <group string="by gender">
                     <filter string="by gender" name="by user_gend" context="{'group_by':'user_gend'}"/>
-                </group>
+                </group> -->
             </search>
         </field>
     </record>

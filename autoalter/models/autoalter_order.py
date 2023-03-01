@@ -7,16 +7,15 @@ class AutoalterOrder(models.Model):
     _rec_name="o_no"
 
     
-    o_email=fields.Char(string="Email id",
+    o_email=fields.Char(related="select_customer_id.email",string="Email id",
         compute="_compute_oemail",readonly=False,store=True)
-    o_no=fields.Char(string="Contact no",
+    o_no=fields.Char(related="select_customer_id.phone",string="Contact no",
         compute="_compute_ono",readonly=False,store=True)
     o_image=fields.Image(string="Image",
         readonly=False,store=True)
     user_birth=fields.Date(string="Birthdate",
         readonly=False,store=True)
-    user_gend=fields.Selection(selection=[('male','Male'),('female','Female'),('other','Other')],
-        string="Gender")
+    #user_gend=fields.Selection()
 
     user_veh_img=fields.Image(string="Vehicle Image")
     
@@ -40,14 +39,7 @@ class AutoalterOrder(models.Model):
 
     select_customer_id=fields.Many2one('res.partner',string="Customer")
     customizer_sel_id=fields.Many2one('autoalter.customizer',string="change avail")
-    @api.depends("select_customer_id.email")
-    def _compute_oemail(self):
-        for record in self:
-            record.o_email=self.select_customer_id.email
-    @api.depends("select_customer_id.phone")
-    def _compute_ono(self):
-        for record in self:
-            record.o_no=self.select_customer_id.phone
+    
    
     cust_price=fields.Char(string="Expected Price")
     stages=fields.Selection(selection=[('send','Send'),('recieve','Recieve')],
