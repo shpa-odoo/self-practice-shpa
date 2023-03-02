@@ -25,12 +25,29 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <label for="cust_name"/>
-                    <h1>
-                        <field name="cust_name" nolabel="1"/>
-                    </h1>
-                    <div style="position: absolute;right: 40px;top:15px">
-                        <field name="cust_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="%(autoalter_order_action)d"
+                                    type="action" icon="fa-bars">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="order_count"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        order
+                                    </span>
+                                </div>
+                            </button>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <div>
+                            <label for="cust_name"/>
+                            <h1>
+                                <field name="cust_name" nolabel="1"/>
+                            </h1>
+                        </div>
+                        <div>
+                            <field name="cust_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                        </div>
                     </div>
                     <div style="margin-top:30px">
                         <group>
@@ -40,20 +57,26 @@
                             <field name="cust_exp"/>
                             <field name="cust_typ_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
+                        
                         <group>
-                            
+                            <group>
+                            <field name="price_cust_id"/>
+                            </group>
+                            <group >
                             <field name="order_ids">
                                 <tree>
                                     <field name="o_email"/>
                                     <field name="user_discrip"/>
-                                    <field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>
-                                    <field name="stages" invisible="1"/>   
+                                    
+                                    <!-- <field name="cust_price" attr="{'invisible':[('stages','=',False)],'editable':True}"/>
+                                    <field name="stages" invisible="1"/>    -->
                                     <!--<field name="cust_price" attrs="{'invisible':[('order_ids','=',False)]}"/>-->
                                     <!--<button name="action_select" title="Accept" type="object" icon="fa-check"/>
                                     <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>-->
                                 </tree>
                             </field>
-                            
+                            </group>
+                        
                         </group>
                     </div>
                     

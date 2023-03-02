@@ -9,7 +9,6 @@
         </menuitem>
         <menuitem id="autoalter_third_level_menu" name="Connection">
             <menuitem id="autoalter_customizer_menu_action" action="autoalter_customizer_action"/>
-            <menuitem id="autoalter_customer_menu_action" action="autoalter_customer_action"/>
         </menuitem>
         <menuitem id="autoalter_forth_level_menu" name="Auction">
             <menuitem id="autoalter_auction_menu_action" action="autoalter_auction_action"/>

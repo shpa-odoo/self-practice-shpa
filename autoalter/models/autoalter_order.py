@@ -4,18 +4,18 @@ import odoo.exceptions
 class AutoalterOrder(models.Model):
     _name="autoalter.order"
     _description="order model"
-    _rec_name="o_no"
 
-    
+    seq_name = fields.Char(string='Purchase order', required=True,readonly=True, default=lambda self: ('New'))
     o_email=fields.Char(related="select_customer_id.email",string="Email id",
-        compute="_compute_oemail",readonly=False,store=True)
+        readonly=False,store=True)
     o_no=fields.Char(related="select_customer_id.phone",string="Contact no",
-        compute="_compute_ono",readonly=False,store=True)
+        readonly=False,store=True)
     o_image=fields.Image(string="Image",
         readonly=False,store=True)
     user_birth=fields.Date(string="Birthdate",
         readonly=False,store=True)
-    #user_gend=fields.Selection()
+    user_gend=fields.Selection(string="gender",selection=[('male','Male'),('female','Female'),('other','Other')],
+                               store=True,readonly=False)
 
     user_veh_img=fields.Image(string="Vehicle Image")
     
@@ -44,7 +44,8 @@ class AutoalterOrder(models.Model):
     cust_price=fields.Char(string="Expected Price")
     stages=fields.Selection(selection=[('send','Send'),('recieve','Recieve')],
         compute="_compute_send",
-        default=False)
+        default=False,
+        store=True)
     des_total_price=fields.Float(string="Design total price",
         default=0,
         compute="_compute_design")
@@ -98,4 +99,12 @@ class AutoalterOrder(models.Model):
     def _compute_send(self):
         for record in self:
             if record.select_cust_ids:
+                #record.stages="send"
+                print("stages")
                 record.stages="send"
+                
+            
+    @api.model
+    def create(self,vals):
+        vals['seq_name'] = self.env['ir.sequence'].next_by_code('autoalter.order')
+        return super(AutoalterOrder,self).create(vals)

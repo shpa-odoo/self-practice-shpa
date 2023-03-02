@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 autoalter.access_autoalter_vehicles,access_autoalter_vehicles,autoalter.model_autoalter_vehicles,base.group_user,1,1,1,1
 autoalter.access_autoalter_design,access_autoalter_design,autoalter.model_autoalter_design,base.group_user,1,1,1,1
 autoalter.access_autoalter_customizer,access_autoalter_customizer,autoalter.model_autoalter_customizer,base.group_user,1,1,1,1
-autoalter.access_autoalter_customer,access_autoalter_customer,autoalter.model_autoalter_customer,base.group_user,1,1,1,1
+
 autoalter.access_autoalter_auction,access_autoalter_auction,autoalter.model_autoalter_auction,base.group_user,1,1,1,1
 autoalter.access_autoalter_interior_materials,access_autoalter_interior_materials,autoalter.model_autoalter_interior_materials,base.group_user,1,1,1,1
 autoalter.access_autoalter_exterior_materials,access_autoalter_exterior_materials,autoalter.model_autoalter_exterior_materials,base.group_user,1,1,1,1
