@@ -4,6 +4,7 @@ import odoo.exceptions
 class AutoalterOrder(models.Model):
     _name="autoalter.order"
     _description="order model"
+    _rec_name="seq_name"
 
     seq_name = fields.Char(string='Purchase order', required=True,readonly=True, default=lambda self: ('New'))
     o_email=fields.Char(related="select_customer_id.email",string="Email id",

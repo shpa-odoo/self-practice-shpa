@@ -1,8 +1,15 @@
 <odoo>
+    <record id="autoalter_filterorder_action" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">autoalter.order</field>
+        <field name="domain">[('select_cust_ids','=',active_ids)]</field>
+        <field name="view_mode">tree,form,kanban</field>
+        
+    </record>
     <record id="autoalter_order_action" model="ir.actions.act_window">
         <field name="name">Orders</field>
         <field name="res_model">autoalter.order</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
         
     </record>
     <record id="seq_task_order" model="ir.sequence">
@@ -159,6 +166,24 @@
             </form>
         </field>
     </record>
+    <!-- <record id="autoalter_order_view_kanban" model="ir.ui.view">
+        <field name="name">autoalter.order.kanban</field>
+        <field name="model">autoalter.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <t t-set="background_image" t-value="kanban_image('autoalter.order', 'user_veh_img', record.id.raw_value)"/>
+                            <field name="model"/>
+                            <field name="comp_name"/>
+                            <field name="veh_price"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
     <record id="autoalter_order_view_search" model="ir.ui.view">
         <field name="name">autoalter.order.search</field>
         <field name="model">autoalter.order</field>

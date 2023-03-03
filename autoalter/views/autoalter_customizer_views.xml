@@ -26,7 +26,7 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                            <button class="oe_stat_button" name="%(autoalter_order_action)d"
+                            <button class="oe_stat_button" name="%(autoalter_filterorder_action)d"
                                     type="action" icon="fa-bars">
                                 <div class="o_stat_info">
                                     <span class="o_stat_value">
