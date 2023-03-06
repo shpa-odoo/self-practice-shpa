@@ -2,14 +2,15 @@
     <record id="autoalter_design_action" model="ir.actions.act_window">
         <field name="name">Designs</field>
         <field name="res_model">autoalter.design</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
     <record id="autoalter_design_view_tree" model="ir.ui.view">
         <field name="name">autoalter.design.tree</field>
         <field name="model">autoalter.design</field>
         <field name="arch" type="xml">
             <tree string="Designs">
-                <field name="design_img" widget="image"/>
+                <field name="design_img" widget="image" options='{"size": [100, 100]}'/>
+                <field name="design_name"/>
                 <field name="design_name_id"/>
                 <field name="des_price"/>
                 <field name="des_gmail"/>
@@ -22,21 +23,61 @@
         <field name="arch" type="xml">
             <form string="Designs">
                 <header>
-                    <button name="%(autoalter.autoalter_order_action)d" type="action" string="Purchase" class="oe_highlight" />
+                    <button name="action_des_order" type="object" string="Purchase" class="oe_highlight" />
                 </header>
                 <sheet>
                     <group>
                         <group>
+                            
+                            <field name="design_name"/>
+                            
                             <field name="design_name_id"/>
                             <field name="des_price"/>
                             <field name="des_gmail"/>
                         </group>
                         <group>
-                            <field name="design_img" widget="image"/>
+                            <field name="design_img" widget="image" options='{"size": [200, 200]}'/>
                         </group>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="autoalter_design_view_kanban" model="ir.ui.view">
+        <field name="name">autoalter.design.kanban</field>
+        <field name="model">autoalter.design</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="design_name_id" records_draggable="false">
+                <field name="design_img"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+
+                            <div class="o_kanban_image me-2">
+                                <!-- <img t-att-src="kanban_image('autoalter.design','design_img',record.id.value)" alt="Image" class="oe_kanban_avatar" /> -->
+                                <field name="design_img" widget="image" class="oe_kanban_avatar"/>
+                            </div>
+                            
+                            <div>
+                                <strong>
+                                    <field name="design_name"/>
+                                </strong>
+                                <field name="is_favorite" widget="boolean_favorite" nolabel="1" class="me-2 float-end"/>
+                            </div>
+                            <div>Price:
+                                <field name="des_price"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="design_name_id" widget="many2one_avatar_user"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
     <record id="autoalter_design_view_search" model="ir.ui.view">

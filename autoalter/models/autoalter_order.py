@@ -34,7 +34,9 @@ class AutoalterOrder(models.Model):
     select_design_ids=fields.Many2many('autoalter.design',string="Select Design")
     select_vehicle_ids=fields.Many2many('autoalter.vehicles',string="Select vehicles")
 
-    buy_vehicle=fields.Boolean(string="Vehicle")
+    buy_vehicle=fields.Boolean(string="Vehicle",
+                               store=True,
+                               readonly=False)
     buy_design=fields.Boolean(string="Design")
     buy_custom=fields.Boolean(string="Custom")
 

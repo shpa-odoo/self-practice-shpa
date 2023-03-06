@@ -7,6 +7,7 @@ class AutoalterVehicles(models.Model):
     _description='show vehicles'
     _rec_name="model"
 
+    is_favorite=fields.Boolean(string="favorite")
     vehicle_img=fields.Image(string="Vehicle Image")
     comp_name=fields.Char(string="Company Name")
     vehicle_type=fields.Selection(selection=[('car','Car'),
@@ -57,7 +58,7 @@ class AutoalterVehicles(models.Model):
         for y in range(datetime.now().year-50, datetime.now().year):
             year_list.append((str(y), str(y)))
         return year_list
-
+    
     cun_origin=fields.Char(string="Country of Origin")
 
     interior_ids=fields.Many2many('autoalter.interior.materials',string="Interior")
@@ -83,13 +84,22 @@ class AutoalterVehicles(models.Model):
     #     return result
 
     def action_veh_order(self):
-        self.ensure_one()
-        ord=self.env['autoalter.order']
-        ord.buy_vehicle=True
-        #ord.select_vehicle_ids=self.active_ids
+        # self.ensure_one()
+        # ord=self.env['autoalter.order']
+        # ord["buy_vehicle"]=True
+        # ord.update({
+        #     'default_buy_vehicle':True,
+        #     'default_select_vehicle_ids':self._uid,
+        #     'mark_so_as_sent':True,
+        # })
+        
+        # ord.select_vehicle_ids=self.id
         result={
-            "type":"ir.action.act_window",
+            "type":"ir.actions.act_window",
             "res_model":"autoalter.order",
             "view_mode":'form',
+            "name":"open veh page",
+            #"context":ord,
         }
+        return result
         

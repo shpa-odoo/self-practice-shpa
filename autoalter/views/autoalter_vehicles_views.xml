@@ -59,13 +59,13 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="vehicle_img" widget="image"/>
-                        </group>
-                        <group>
                             <field name="comp_name"/>
                             <field name="model"/>
                             <field name="vehicle_type"/>
                             <field name="veh_price"/>  
+                        </group>
+                        <group>
+                            <field name="vehicle_img" widget="image" options='{"size": [200, 200]}'/>
                         </group>
                     </group>
                     <seperator/>
@@ -164,18 +164,30 @@
         <field name="name">autoalter.vehicles.kanban</field>
         <field name="model">autoalter.vehicles</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_group_by="model" records_draggable="false">
                 <field name="vehicle_img"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <!--<t t-set="background_image" t-value="kanban_image('autoalter.vehicles', 'vehicle_img', record.id.raw_value)"/>-->
-                            <div class="o_kanban_image">
-                                <img t-att-src="kanban_image('autoalter.vehicles','vehicle_imgs',record.id.raw_value)" alt="Image"/>
+                            
+                            <div class="o_kanban_image me-2">
+                                <!-- <img t-att-src="kanban_image('autoalter.vehicles','vehicle_img',record.id.value)" alt="Image" class="oe_kanban_avatar"/> -->
+                                <field name="vehicle_img" widget="image" class="oe_kanban_avatar"/>
                             </div>
-                            <field name="model"/>
-                            <field name="comp_name"/>
-                            <field name="veh_price"/>
+                            <div>
+                                    <strong>
+                                        <field name="model"/>
+                                    </strong>
+                                    <field name="is_favorite" widget="boolean_favorite" nolabel="1" class="me-2 float-end"/> 
+                                
+                            </div>
+                            <div>Company:
+                                <field name="comp_name"/>
+                            </div>
+                            <div>
+                                Price:
+                                <field name="veh_price"/>
+                            </div>
                         </div>
                     </t>
                 </templates>
