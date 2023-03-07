@@ -19,17 +19,10 @@ class AutoalterDesign(models.Model):
     
     des_gmail=fields.Char(string="Gmail",
         related="design_name_id.cust_emial")
-
-    # @api.depends("design_name_id.cust_emial")
-    # def _compute_email(self):
-    #     for record in self:
-    #         record.des_gmail=self.design_name_id.cust_emial
-    
     
     def action_des_order(self):
         # self.ensure_one()
-        # ord=self.env['autoalter.order']
-        # ord["buy_design"]=True
+        
         
         #ord.select_vehicle_ids=self.id
         result={
@@ -37,6 +30,6 @@ class AutoalterDesign(models.Model):
             "res_model":"autoalter.order",
             "view_mode":'form',
             "name":"open design page",
-            "context":{"buy_design":True},
+            "context":{"default_buy_design":True},
         }
         return result

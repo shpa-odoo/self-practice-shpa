@@ -65,41 +65,21 @@ class AutoalterVehicles(models.Model):
     exterior_ids=fields.Many2many('autoalter.exterior.materials',string="Exterior")
     feature_ids=fields.Many2many('autoalter.feature',string="Features")
 
-    # def action_view_invoice(self):
-    #     self.ensure_one()
-    #     query = self.env['account.move.line']._search([('move_id.move_type', 'in', self.env['account.move'].get_sale_types())])
-    #     query.order = None
-    #     query.add_where('analytic_distribution ? %s', [str(self.id)])
-    #     query_string, query_param = query.select('DISTINCT move_id')
-    #     self._cr.execute(query_string, query_param)
-    #     move_ids = [line.get('move_id') for line in self._cr.dictfetchall()]
-    #     result = {
-    #         "type": "ir.actions.act_window",
-    #         "res_model": "account.move",
-    #         "domain": [('id', 'in', move_ids)],
-    #         "context": {"create": False},
-    #         "name": "Customer Invoices",
-    #         'view_mode': 'tree,form',
-    #     }
-    #     return result
-
+    
     def action_veh_order(self):
-        # self.ensure_one()
-        # ord=self.env['autoalter.order']
-        # ord["buy_vehicle"]=True
-        # ord.update({
-        #     'default_buy_vehicle':True,
-        #     'default_select_vehicle_ids':self._uid,
-        #     'mark_so_as_sent':True,
-        # })
+        self.ensure_one()
         
         # ord.select_vehicle_ids=self.id
+        # ord=self.env['autoalter.order']
+        # ord.write({'select_vehicle_ids': [(4, [active_id])] }) 
         result={
             "type":"ir.actions.act_window",
             "res_model":"autoalter.order",
             "view_mode":'form',
             "name":"open veh page",
-            #"context":ord,
+            "context":{"default_buy_vehicle":True,
+                       "default_select_vehicle_ids":[(4, [self.id])]
+                    },
         }
         return result
         

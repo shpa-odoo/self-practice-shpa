@@ -1,0 +1,111 @@
+<odoo>
+    <record id="vehicle_lexus_es" model="autoalter.vehicles">
+                <field name="comp_name">Toyota Motor Corporation</field>
+                <field name="vehicle_type">car</field>
+                <field name="model">Lexus ES</field>
+                <field name="veh_price">6581000</field>
+                <field name="engine_type">2.5-liter L4 engine</field>
+                <field name="displacement">2487</field>
+                <field name="max_power">175.67bhp@5700rpm</field>
+                <field name="max_torque">221Nm@3600-5200rpm</field>
+                <field name="no_cylinder">4</field>
+                <field name="trans_type">Automatic</field>
+                <field name="gear_box">E-CVT</field>
+                <field name="fuel_type">petrol</field>
+                <field name="mileage">23</field>
+                <field name="tank_cap">65.0</field>
+                <field name="f_suspen">MacPherson struts</field>
+                <field name="r_suspen">Double Wishbone</field>
+                <field name="ster_col">Tilt and Telescopic</field>
+                <field name="turn_rad">5.9 meters</field>
+                <field name="f_break_typ">Disc</field>
+                <field name="r_break_typ">Disc</field>
+                <field name="length">4975</field>
+                <field name="width">1865</field>
+                <field name="height">1445</field>
+                <field name="seat_capcty">5</field>
+                <field name="wheelbase">2870</field>
+                <field name="kerb_weight">1740</field>
+                <field name="no_door">4</field>
+                
+                <field name="cmp_email">xyz@car.com</field>
+                <field name="cmp_contact">234*******</field>
+                
+    </record>
+    <record id="vehicle_lexus_lc_s00h" model="autoalter.vehicles">
+                <field name="comp_name">Toyota Motor Corporation</field>
+                <field name="vehicle_type">car</field>
+                <field name="model">Lexus LC 500h</field>
+                <field name="veh_price">22900000</field>
+                <field name="engine_type">3.5-literV6FourCam</field>
+                <field name="displacement">3456</field>
+                <field name="max_power">295.02@6600rpm</field>
+                <field name="max_torque">350Nm@5100rpm</field>
+                <field name="no_cylinder">6</field>
+                <field name="trans_type">Automatic</field>
+                <field name="gear_box">10 Speed</field>
+                <field name="fuel_type">petrol</field>
+                <field name="mileage">12.3</field>
+                <field name="tank_cap">82.0</field>
+                <field name="f_suspen">Multi-link type,coil springs</field>
+                <field name="r_suspen">multi-link suspension</field>
+                <field name="ster_col">rick and pin</field>
+                <field name="turn_rad">5.3m</field>
+                <field name="f_break_typ">Ventilated Disc</field>
+                <field name="r_break_typ">Ventilated Disc</field>
+                <field name="length">4770</field>
+                <field name="width">1920</field>
+                <field name="height">1345</field>
+                <field name="seat_capcty">4</field>
+                <field name="wheelbase">2870</field>
+                <field name="kerb_weight">1985-2020</field>
+                <field name="cmp_email"></field>
+                <field name="cmp_contact">xyz@car.com</field>
+                <field name="cmp_year">234*******</field>
+    </record>
+
+    <record id="design_" model="autoalter_design">
+    </record>
+
+    <record id="ex1" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Adjustable Headlights</field>
+    </record>
+    <record id="ex2" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Fog Lights - Front,rear</field>
+    </record>
+    <record id="ex3" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Alloy Wheels</field>
+    </record>
+    <record id="ex4" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Power Adjustable Exterior Rear View Mirror</field>
+    </record>
+    <record id="ex5" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Tinted Glass</field>
+    </record>
+    <record id="ex6" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Electric Folding Rear View Mirror</field>
+    </record>
+    <record id="ex7" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Rain Sensing Wiper</field>
+    </record>
+    <record id="ex8" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Sun Roof</field>
+    </record>
+    <record id="ex9" model="autoalter_exterior_materials">
+        <field name="exterior_mat">moon roof</field>
+    </record>
+    <record id="ex10" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Intergrated Antenna</field>
+    </record>
+    <record id="ex11" model="autoalter_exterior_materials">
+        <field name="exterior_mat">Chrome Garnish</field>
+    </record>
+
+
+    <record id="" model="autoalter_interior_materials">
+        <field name=""></field>
+    </record>
+
+    <record id="" model="autoalter_feature">
+    </record>
+</odoo>

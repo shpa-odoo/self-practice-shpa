@@ -166,24 +166,36 @@
             </form>
         </field>
     </record>
-    <!-- <record id="autoalter_order_view_kanban" model="ir.ui.view">
+    <record id="autoalter_order_view_kanban" model="ir.ui.view">
         <field name="name">autoalter.order.kanban</field>
         <field name="model">autoalter.order</field>
         <field name="arch" type="xml">
             <kanban>
+                <field name="o_image"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <t t-set="background_image" t-value="kanban_image('autoalter.order', 'user_veh_img', record.id.raw_value)"/>
-                            <field name="model"/>
-                            <field name="comp_name"/>
-                            <field name="veh_price"/>
+                            <!-- <t t-set="background_image" t-value="kanban_image('autoalter.order', 'user_veh_img', record.id.value)"/> -->
+                            <div>
+                                <field name="o_image" widget="image" class="oe_kanban_image"/>
+                            </div>
+                            <div>
+                                <strong>
+                                    <field name="select_customer_id"/>
+                                </strong>
+                            </div>
+                            <div>Company:
+                                <field name="o_email"/>
+                            </div>
+                            <div>Price:
+                                <field name="total_price"/>
+                            </div>
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
-    </record> -->
+    </record>
     <record id="autoalter_order_view_search" model="ir.ui.view">
         <field name="name">autoalter.order.search</field>
         <field name="model">autoalter.order</field>

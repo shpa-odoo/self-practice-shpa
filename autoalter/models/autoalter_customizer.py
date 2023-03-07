@@ -44,6 +44,16 @@ class AutoalterCustomizer(models.Model):
         for record in self:
             record.status="rejected"
             raise odoo.exceptions.UserError("record has been canceled")
+        
+    def action_order_cust(self):
+        result={
+            "type":"ir.actions.act_window",
+            "res_model":"autoalter.order",
+            "view_mode":'form',
+            "name":"open veh page",
+            "context":{"default_buy_custom":True},
+        }
+        return result
     @api.depends('order_ids')
     def _compute_status(self):
         for record in self:
@@ -51,3 +61,4 @@ class AutoalterCustomizer(models.Model):
                 record.status="recieve"
             if record.price_cust_id:
                 record.status="sent"
+
