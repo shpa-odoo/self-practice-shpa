@@ -99,7 +99,7 @@
                                 <group>
                                     <group>
                                         <field name="user_discrip"/>
-                                        
+                                        <field name="cust_price"/>
                                     </group>
                                     <group>
                                         <field name="user_veh_img" widget="image"/>
@@ -115,7 +115,7 @@
                                 <field name="cust_emial"/>
                                 <field name="cust_exp"/>
                                 <field name="status" invisible="1"/>
-                                
+                                <field name="order_cust_price" attr="{'invisible':[('status','!=','sent')]}"/>
                                 <button name="action_select" title="Accept" type="object" icon="fa-check" attrs="{'invisible':[('status','!=','sent')]}"/>
                                 <button name="action_cancle" title="Refuse" type="object" icon="fa-close" attrs="{'invisible':[('status','!=','sent')]}"/>
                                 </tree>

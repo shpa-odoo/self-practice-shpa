@@ -23,9 +23,20 @@ class AutoalterCustomizer(models.Model):
         compute="_compute_status")
     cust_avil=fields.Boolean(string="Available")
     order_ids=fields.Many2many('autoalter.order',string="Order id")
-    price_cust_id=fields.Many2one('autoalter.custprice',string="Expected price")
+    price_cust_ids=fields.Many2many('autoalter.custprice',string="Expected price")
     order_count=fields.Integer(compute="_compute_order")
-    order_cust_price=fields.Float(string="expected price")
+    order_cust_price=fields.Float(string="expected price",
+                                  compute="_compute_compute")
+    @api.depends('price_cust_ids','order_ids')
+    def _compute_compute(self):
+        for record in self:
+            custo=self.env['autoalter.order'].browse(self.env.context.get('active_id'))
+            for ord in record.price_cust_ids:
+                if ord.id_order==custo:
+                    if ord.id_cust==record.id:
+                        record.order_cust_price=record.price_cust_ids.price
+            record.order_cust_price=0
+            
     @api.depends("order_ids")
     def _compute_order(self):
         for record in self:
@@ -59,6 +70,6 @@ class AutoalterCustomizer(models.Model):
         for record in self:
             if record.order_ids:
                 record.status="recieve"
-            if record.price_cust_id:
-                record.status="sent"
+            else:
+                record.status=False
 

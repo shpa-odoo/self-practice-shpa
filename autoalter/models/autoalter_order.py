@@ -42,9 +42,10 @@ class AutoalterOrder(models.Model):
 
     select_customer_id=fields.Many2one('res.partner',string="Customer")
     customizer_sel_id=fields.Many2one('autoalter.customizer',string="change avail")
-    
+    price_order_ids=fields.Many2many('autoalter.custprice',
+                                     compute="_compute_relation")
    
-    cust_price=fields.Char(string="Expected Price")
+    cust_price=fields.Float(string="Expected Price")
     stages=fields.Selection(selection=[('send','Send'),('recieve','Recieve')],
         compute="_compute_send",
         default=False,
@@ -95,19 +96,25 @@ class AutoalterOrder(models.Model):
                     raise odoo.exceptions.UserError('Sold properties can not be canceled')
                 else:
                     record.state="canceled"
-                
-    price_order_ids=fields.Many2many('autoalter.custprice',string="Expected Price")
 
     @api.depends('select_cust_ids')
     def _compute_send(self):
         for record in self:
             if record.select_cust_ids:
-                #record.stages="send"
-                print("stages")
                 record.stages="send"
+            if record.cust_price:
+                record.stages="recieve"
                 
             
     @api.model
     def create(self,vals):
         vals['seq_name'] = self.env['ir.sequence'].next_by_code('autoalter.order')
         return super(AutoalterOrder,self).create(vals)
+    
+    @api.depends('cust_price')
+    def _compute_relation(self):
+        custo=self.env['autoalter.customizer'].browse(self.env.context.get('active_id'))
+        for record in self:
+            record.price_order_ids.price=record.cust_price
+            record.price_order_ids.id_order=record.id
+            record.price_order_ids.id_cust=custo
