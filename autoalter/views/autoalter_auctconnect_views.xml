@@ -1,0 +1,36 @@
+<odoo>
+    <record id="autoalter_auctconnect_action" model="ir.actions.act_window">
+        <field name="name">Auction</field>
+        <field name="res_model">autoalter.auctconnect</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="autoalter_auctconnect_view_form" model="ir.ui.view">
+        <field name="name">autoalter.auctconnect.form</field>
+        <field name="model">autoalter.auctconnect</field>
+        <field name="arch" type="xml">
+            <form string="Auction">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="c_name"/>
+                            <field name="m_name"/>
+                            <field name="d_purchase"/>
+                            <field name="s_price"/>
+                            <field name="l_dt"/>
+                        </group>
+                        <group>
+                            <field name="auct_i" widget="image"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Your Price">
+                            <group>
+                                <field name="auctconct_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form> 
+        </field>
+    </record>
+</odoo>

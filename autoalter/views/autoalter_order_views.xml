@@ -2,14 +2,14 @@
     <record id="autoalter_filterorder_action" model="ir.actions.act_window">
         <field name="name">Orders</field>
         <field name="res_model">autoalter.order</field>
-        <field name="domain">[('select_cust_ids','=',active_ids)]</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[('offer_ids.partner_id','=',active_id)]</field>
+        <field name="view_mode">kanban,tree,form</field>
         
     </record>
     <record id="autoalter_order_action" model="ir.actions.act_window">
         <field name="name">Orders</field>
         <field name="res_model">autoalter.order</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">kanban,tree,form</field>
         
     </record>
     <record id="seq_task_order" model="ir.sequence">
@@ -24,14 +24,16 @@
         <field name="model">autoalter.order</field>
         <field name="arch" type="xml">
             <tree>
+                <header>
+                    <button name="action_add_offer" type="object" string="add offer"/>
+                </header>
                 <field name="seq_name"/>
                 <field name="select_customer_id"/>
                 <field name="o_email"/>
                 <field name="o_no"/>
                 <field name="user_birth"/>
                 <field name="user_gend"/>
-                <field name="stages" invisible="1"/>
-                <!--<field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>-->
+                
             </tree>
         </field>
     </record>
@@ -44,8 +46,8 @@
                     <button name="action_buy" type="object" string="Buy" class="oe_highlight" attrs="{'invisible':[('state','in',('order','buy','new'))]}"/>
                     <button name="action_buy" type="object" string="Buy" attrs="{'invisible':[('state','not in',('order','buy'))]}"/>
                     <button name="action_cancle" type="object" string="Cancle" attrs="{'invisible': [('state','=','buy')]}"/>
-                    <field name="state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="new,order,address,buy" attrs="{'invisible':[('state','in',('buy','canceled'))]}"/>
-                    <field name="stage_id2" widget="statusbar" statusbar_visible="new,order,address,buy" attrs="{'invisible':[('state','in',('order','address','new'))]}"/>
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="new,order,buy" attrs="{'invisible':[('state','in',('buy','canceled'))]}"/>
+                    <field name="stage_id2" widget="statusbar" statusbar_visible="new,order,buy" attrs="{'invisible':[('state','in',('order','new'))]}"/>
                 </header>
                 
                 <sheet>
@@ -88,9 +90,7 @@
                             <field name="buy_design"/>
                             <field name="buy_custom"/>
                         </group>
-                        <!-- <group>
-                            <field name="cust_price" attr="{'invisible':[('stages','=',False)]}"/>
-                        </group> -->
+                        
                         
                     </div>
                     <notebook>
@@ -99,7 +99,6 @@
                                 <group>
                                     <group>
                                         <field name="user_discrip"/>
-                                        <field name="cust_price"/>
                                     </group>
                                     <group>
                                         <field name="user_veh_img" widget="image"/>
@@ -107,21 +106,10 @@
                                 </group>
                             </div>
                             <hr style="margin:3em 0"/>
+                            
                             <group>
-                            
-                            <field name="select_cust_ids" domain="[('cust_avil','=','True')]" options="{'no_create': True}">
-                                <tree decoration-success="status=='accepted'" decoration-danger="status=='rejected'">
-                                <field name="cust_name"/>
-                                <field name="cust_emial"/>
-                                <field name="cust_exp"/>
-                                <field name="status" invisible="1"/>
-                                <field name="order_cust_price" attr="{'invisible':[('status','!=','sent')]}"/>
-                                <button name="action_select" title="Accept" type="object" icon="fa-check" attrs="{'invisible':[('status','!=','sent')]}"/>
-                                <button name="action_cancle" title="Refuse" type="object" icon="fa-close" attrs="{'invisible':[('status','!=','sent')]}"/>
-                                </tree>
-                            </field>
+                                <field name="offer_ids" attrs="{'readonly': [('state', 'in',('order','buy','canceled'))]}" />
                             </group>
-                            
                             
                             <group class="oe_subtotal_footer or_right">
                                 <field name="cust_total_price" readonly="1"/>

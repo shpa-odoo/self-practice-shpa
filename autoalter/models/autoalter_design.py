@@ -11,25 +11,24 @@ class AutoalterDesign(models.Model):
     design_name=fields.Char(string="Design name")
     design_img=fields.Image(string="Design Image",
         required=True)
-    
     des_price=fields.Float(string="Price",
         required=True)
-    design_name_id=fields.Many2one('autoalter.customizer',string="Design by")
-
-    
+    _sql_constraints=[
+		('check_des_price','CHECK (des_price>0)','Price must be positive.')
+	]
+    design_name_id=fields.Many2one('autoalter.customizer',string="Design by",required=True)
     des_gmail=fields.Char(string="Gmail",
         related="design_name_id.cust_emial")
     
     def action_des_order(self):
         # self.ensure_one()
-        
-        
-        #ord.select_vehicle_ids=self.id
         result={
             "type":"ir.actions.act_window",
             "res_model":"autoalter.order",
             "view_mode":'form',
             "name":"open design page",
-            "context":{"default_buy_design":True},
+            "context":{"default_buy_design":True,
+                       "default_select_design_ids":[(4, [self.id])]
+                       },
         }
         return result

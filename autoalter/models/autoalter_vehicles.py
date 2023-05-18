@@ -8,8 +8,10 @@ class AutoalterVehicles(models.Model):
     _rec_name="model"
 
     is_favorite=fields.Boolean(string="favorite")
-    vehicle_img=fields.Image(string="Vehicle Image")
-    comp_name=fields.Char(string="Company Name")
+    vehicle_img=fields.Image(string="Vehicle Image",
+                             required=True)
+    comp_name=fields.Char(string="Company Name",
+                          required=True)
     vehicle_type=fields.Selection(selection=[('car','Car'),
         ('scooter','Scooter'),
         ('bike','Bike'),
@@ -17,33 +19,37 @@ class AutoalterVehicles(models.Model):
         ('bicycle','Bicycle'),
         ('bus','Bus')],
         string="Type")
-    model=fields.Char(string="Model Name")
-    veh_price=fields.Float(string="Price")
-    engine_type=fields.Char(string="Engine Type")
-    displacement=fields.Char(string="Displacement(cc)")
-    max_power=fields.Char(string="Max Power")
-    max_torque=fields.Char(string="Max tourqe")
-    no_cylinder=fields.Char(string="No of Cylinder")
-    trans_type=fields.Char(string="Transmission Type")
-    gear_box=fields.Char(string="Gear Box")
+    model=fields.Char(string="Model Name",required=True)
+    veh_price=fields.Float(string="Price",
+                           required=True)
+    _sql_constraints=[
+		('check_price','CHECK (veh_price>0)','Price must be positive.')
+	]
+    engine_type=fields.Char(string="Engine Type",required=True)
+    displacement=fields.Char(string="Displacement(cc)",required=True)
+    max_power=fields.Char(string="Max Power",required=True)
+    max_torque=fields.Char(string="Max tourqe",required=True)
+    no_cylinder=fields.Char(string="No of Cylinder",required=True)
+    trans_type=fields.Char(string="Transmission Type",required=True)
+    gear_box=fields.Char(string="Gear Box",required=True)
     fuel_type=fields.Selection(string="Fuel Type",
         selection=[('petrol','Petrol'),('disel','Disel'),('lpg','LPG'),('cng','CNG')])
-    mileage=fields.Char(string="Mileage(kmpl)")
-    tank_cap=fields.Char(string="Fuel Tank Capacity(liter)")
+    mileage=fields.Char(string="Mileage(kmpl)",required=True)
+    tank_cap=fields.Char(string="Fuel Tank Capacity(liter)",required=True)
     other_fuel_type=fields.Selection(string="Other Fuel Type",
         selection=[('petrol','Petrol'),('disel','Disel'),('lpg','LPG'),('cng','CNG')])
     f_suspen=fields.Char(string="Front Suspension")
     r_suspen=fields.Char(string="Rear Suspention")
     ster_col=fields.Char(string="Steering Column")
-    turn_rad=fields.Char(string="Turning Radius(meter)")
-    f_break_typ=fields.Char(string="Front Break Type")
-    r_break_typ=fields.Char(string="Rear Break Type")
+    turn_rad=fields.Char(string="Turning Radius(meter)",required=True)
+    f_break_typ=fields.Char(string="Front Break Type",required=True)
+    r_break_typ=fields.Char(string="Rear Break Type",required=True)
     length=fields.Char(string="Length(mm)")
     width=fields.Char(string="Width(mm)")
     height=fields.Char(string="Height(mm)")
     seat_capcty=fields.Char(string="Seating capacity")
-    wheelbase=fields.Char(string="Wheel Base(mm)")
-    kerb_weight=fields.Char(string="Kerb Weight(kg)")
+    wheelbase=fields.Char(string="Wheel Base(mm)",required=True)
+    kerb_weight=fields.Char(string="Kerb Weight(kg)",required=True)
     no_door=fields.Char(string="No of Doors")
     tyre_size=fields.Char(string="Tyre Size")
     tyre_typ=fields.Char(string="Tyre Type")
@@ -61,9 +67,9 @@ class AutoalterVehicles(models.Model):
     
     cun_origin=fields.Char(string="Country of Origin")
 
-    interior_ids=fields.Many2many('autoalter.interior.materials',string="Interior")
-    exterior_ids=fields.Many2many('autoalter.exterior.materials',string="Exterior")
-    feature_ids=fields.Many2many('autoalter.feature',string="Features")
+    interior_ids=fields.Many2many('autoalter.interior.materials',string="Interior",required=True)
+    exterior_ids=fields.Many2many('autoalter.exterior.materials',string="Exterior",required=True)
+    feature_ids=fields.Many2many('autoalter.feature',string="Features",required=True)
 
     
     def action_veh_order(self):

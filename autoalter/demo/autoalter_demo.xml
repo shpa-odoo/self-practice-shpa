@@ -1,4 +1,114 @@
 <odoo>
+    <record id="c_type_1" model="autoalter.customizer.type">
+        <field name="customizer_typ">Designer</field>
+    </record>
+    <record id="c_type_2" model="autoalter.customizer.type">
+        <field name="customizer_typ">Modifier</field>
+    </record>
+    <record id="c_type_3" model="autoalter.customizer.type">
+        <field name="customizer_typ">engine mechanic</field>
+    </record>
+
+    <record id="ex1" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Adjustable Headlights</field>
+    </record>
+    <record id="ex2" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Fog Lights - Front,rear</field>
+    </record>
+    <record id="ex3" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Alloy Wheels</field>
+    </record>
+    <record id="ex4" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Power Adjustable Exterior Rear View Mirror</field>
+    </record>
+    <record id="ex5" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Tinted Glass</field>
+    </record>
+    <record id="ex6" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Electric Folding Rear View Mirror</field>
+    </record>
+    <record id="ex7" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Rain Sensing Wiper</field>
+    </record>
+    <record id="ex8" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Sun Roof</field>
+    </record>
+    <record id="ex9" model="autoalter.exterior.materials">
+        <field name="exterior_mat">moon roof</field>
+    </record>
+    <record id="ex10" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Intergrated Antenna</field>
+    </record>
+    <record id="ex11" model="autoalter.exterior.materials">
+        <field name="exterior_mat">Chrome Garnish</field>
+    </record>
+
+
+    <record id="in1" model="autoalter.interior.materials">
+        <field name="interior_mat">Tachometer</field>
+    </record>
+    <record id="in2" model="autoalter.interior.materials">
+        <field name="interior_mat">Electronic Multi-Tripmeter</field>
+    </record>
+    <record id="in3" model="autoalter.interior.materials">
+        <field name="interior_mat">Leather seat</field>
+    </record>
+    <record id="in4" model="autoalter.interior.materials">
+        <field name="interior_mat">Leather stearing wheels</field>
+    </record>
+    <record id="in5" model="autoalter.interior.materials">
+        <field name="interior_mat">Glove Compartment</field>
+    </record>
+    <record id="in6" model="autoalter.interior.materials">
+        <field name="interior_mat">Outside temperature display</field>
+    </record>
+    <record id="in7" model="autoalter.interior.materials">
+        <field name="interior_mat">Digital odometer</field>
+    </record>
+    <record id="in8" model="autoalter.interior.materials">
+        <field name="interior_mat">Driving Experience Control Eco</field>
+    </record>
+    <record id="in9" model="autoalter.interior.materials">
+        <field name="interior_mat">vantilated seat</field>
+    </record>
+    <record id="in10" model="autoalter.interior.materials">
+        <field name="interior_mat">Dual tone dashboard</field>
+    </record>
+
+    <record id="ft1" model="autoalter.feature">
+        <field name="feature_typ"></field>
+    </record>
+    <record id="ft2" model="autoalter.feature">
+        <field name="feature_typ"></field>
+    </record>
+    <record id="ft3" model="autoalter.feature">
+        <field name="feature_typ"></field>
+    </record>
+    <record id="ft4" model="autoalter.feature">
+        <field name="feature_typ">Power steering</field>
+    </record>
+    <record id="ft5" model="autoalter.feature">
+        <field name="feature_typ">Power windows Front</field>
+    </record>
+    <record id="ft6" model="autoalter.feature">
+        <field name="feature_typ">Anti lock system</field>
+    </record>
+    <record id="ft7" model="autoalter.feature">
+        <field name="feature_typ">air conditioner</field>
+    </record>
+    <record id="ft8" model="autoalter.feature">
+        <field name="feature_typ">driver airbag</field>
+    </record>
+    <record id="ft9" model="autoalter.feature">
+        <field name="feature_typ">fog lights-front</field>
+    </record>
+    <record id="ft10" model="autoalter.feature">
+        <field name="feature_typ">alloy wheels</field>
+    </record>
+    <record id="ft11" model="autoalter.feature">
+        <field name="feature_typ">multi-function steering</field>
+    </record>
+
     <record id="vehicle_lexus_es" model="autoalter.vehicles">
                 <field name="comp_name">Toyota Motor Corporation</field>
                 <field name="vehicle_type">car</field>
@@ -27,7 +137,24 @@
                 <field name="wheelbase">2870</field>
                 <field name="kerb_weight">1740</field>
                 <field name="no_door">4</field>
-                
+                <field name="interior_ids" eval="[ref('in1')]"/>
+                <field name="interior_ids" eval="[ref('in2')]"/>
+                <field name="interior_ids" eval="[ref('in3')]"/>
+                <field name="interior_ids" eval="[ref('in4')]"/>
+                <field name="interior_ids" eval="[ref('in5')]"/>
+                <field name="interior_ids" eval="[ref('in6')]"/>
+                <field name="exterior_ids" eval="[ref('ex1')]"/>
+                <field name="exterior_ids" eval="[ref('ex2')]"/>
+                <field name="exterior_ids" eval="[ref('ex3')]"/>
+                <field name="exterior_ids" eval="[ref('ex4')]"/>
+                <field name="exterior_ids" eval="[ref('ex5')]"/>
+                <field name="exterior_ids" eval="[ref('ex6')]"/>
+                <field name="feature_ids" eval="[ref('ft1')]"/>
+                <field name="feature_ids" eval="[ref('ft2')]"/>
+                <field name="feature_ids" eval="[ref('ft3')]"/>
+                <field name="feature_ids" eval="[ref('ft4')]"/>
+                <field name="feature_ids" eval="[ref('ft5')]"/>
+                <field name="feature_ids" eval="[ref('ft6')]"/>
                 <field name="cmp_email">xyz@car.com</field>
                 <field name="cmp_contact">234*******</field>
                 
@@ -60,52 +187,68 @@
                 <field name="wheelbase">2870</field>
                 <field name="kerb_weight">1985-2020</field>
                 <field name="cmp_email"></field>
-                <field name="cmp_contact">xyz@car.com</field>
-                <field name="cmp_year">234*******</field>
+                <field name="interior_ids" eval="[ref('in6')]"/>
+                <field name="interior_ids" eval="[ref('in7')]"/>
+                <field name="interior_ids" eval="[ref('in8')]"/>
+                <field name="interior_ids" eval="[ref('in9')]"/>
+                <field name="interior_ids" eval="[ref('in10')]"/>
+                <field name="interior_ids" eval="[ref('in1')]"/>
+                <field name="exterior_ids" eval="[ref('ex6')]"/>
+                <field name="exterior_ids" eval="[ref('ex7')]"/>
+                <field name="exterior_ids" eval="[ref('ex8')]"/>
+                <field name="exterior_ids" eval="[ref('ex9')]"/>
+                <field name="exterior_ids" eval="[ref('ex10')]"/>
+                <field name="exterior_ids" eval="[ref('ex11')]"/>
+                <field name="feature_ids" eval="[ref('ft6')]"/>
+                <field name="feature_ids" eval="[ref('ft7')]"/>
+                <field name="feature_ids" eval="[ref('ft8')]"/>
+                <field name="feature_ids" eval="[ref('ft9')]"/>
+                <field name="feature_ids" eval="[ref('ft10')]"/>
+                <field name="feature_ids" eval="[ref('ft11')]"/>
+                <field name="cmp_email">xyz@car.com</field>
+                <field name="cmp_contact">234*******</field>
+                <field name="cmp_year"></field>
     </record>
 
-    <record id="design_" model="autoalter_design">
+    <record id="customizer_1" model="autoalter.customizer">
+        <field name="cust_name">John Demo</field>
+        <field name="cust_emial">john@</field>
+        <field name="cust_no">123*******</field>
+        <field name="cust_exp">25</field>
+        <field name="cust_avil">True</field>
+        <field name="cust_typ_ids" eval="[ref('c_type_2')]"/>
+        <field name="cust_typ_ids" eval="[ref('c_type_3')]"/>
+    </record>
+    <record id="customizer_2" model="autoalter.customizer">
+        <field name="cust_name">Cruze shipherd</field>
+        <field name="cust_emial">cruze@</field>
+        <field name="cust_no">345*******</field>
+        <field name="cust_exp">5</field>
+        <field name="cust_avil">True</field>
+        <field name="cust_typ_ids" eval="[ref('c_type_1')]"/>
+    </record>
+    <record id="customizer_3" model="autoalter.customizer">
+        <field name="cust_name">sem dissuza</field>
+        <field name="cust_emial">sem@</field>
+        <field name="cust_no">378*******</field>
+        <field name="cust_exp">15</field>
+        <field name="cust_avil">True</field>
+        <field name="cust_typ_ids" eval="[ref('c_type_1')]"/>
     </record>
 
-    <record id="ex1" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Adjustable Headlights</field>
+    <record id="design_1" model="autoalter.design">
+        <field name="is_favorite">True</field>
+        <field name="design_name"></field>
+        <field name="des_price">50000</field>
+        <field name="design_name_id" ref="customizer_3"/>
     </record>
-    <record id="ex2" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Fog Lights - Front,rear</field>
-    </record>
-    <record id="ex3" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Alloy Wheels</field>
-    </record>
-    <record id="ex4" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Power Adjustable Exterior Rear View Mirror</field>
-    </record>
-    <record id="ex5" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Tinted Glass</field>
-    </record>
-    <record id="ex6" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Electric Folding Rear View Mirror</field>
-    </record>
-    <record id="ex7" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Rain Sensing Wiper</field>
-    </record>
-    <record id="ex8" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Sun Roof</field>
-    </record>
-    <record id="ex9" model="autoalter_exterior_materials">
-        <field name="exterior_mat">moon roof</field>
-    </record>
-    <record id="ex10" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Intergrated Antenna</field>
-    </record>
-    <record id="ex11" model="autoalter_exterior_materials">
-        <field name="exterior_mat">Chrome Garnish</field>
+    <record id="design_2" model="autoalter.design">
+        <field name="is_favorite">False</field>
+        <field name="design_name"></field>
+        <field name="des_price">60000</field>
+        <field name="design_name_id" ref="customizer_2"/>
     </record>
 
 
-    <record id="" model="autoalter_interior_materials">
-        <field name=""></field>
-    </record>
-
-    <record id="" model="autoalter_feature">
-    </record>
+    
 </odoo>

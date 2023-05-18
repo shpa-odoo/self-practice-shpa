@@ -2,7 +2,7 @@
     <record id="autoalter_vehicles_action" model="ir.actions.act_window">
         <field name="name">Vehicles</field>
         <field name="res_model">autoalter.vehicles</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
     <record id="autoalter_vehicles_view_tree" model="ir.ui.view">
         <field name="name">autoalter.vehicles.tree</field>

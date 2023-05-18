@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_autoalter_order">
+        <t t-foreach="docs" t-as="order">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="order.seq_name"/>
+                        </h2>
+                        <div><h4>
+                            <span t-field="order.select_customer_id"/>
+                            </h4>
+                        </div>
+                        <div><h4>Details:</h4>
+                            <div>
+                                <span t-field="order.o_email"/>
+                            </div>
+                            <div>
+                                <span t-field="order.o_no"/>
+                            </div>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Design Total price</th>
+                                        <th>Vehivle Total Price</th>
+                                        <th>Custom Total price</th>
+                                        <th>Total price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span t-field="order.des_total_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="order.veh_total_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="order.cust_total_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="order.total_price"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div></div>
+                        <t t-if="order.buy_design == True">
+                            <t t-call="autoalter.report_select_design"/>
+                        </t>
+                        <div></div>
+                        <t t-if="order.buy_vehicle == True">
+                            <t t-call="autoalter.report_select_vehicle"/>
+                        </t>
+                        <div></div>
+                        <t t-if="order.buy_custom == True">
+                            <t t-call="autoalter.report_custom"/>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="report_select_design">
+        <div></div>
+        <h4>Design Report:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Design name</th>
+                    <th>Gmail</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-set="designs" t-value="order.mapped('select_design_ids')"/>
+                <tr t-foreach="designs" t-as="design">
+                    <td>
+                        <span t-field="design.design_name"/>
+                    </td>
+                    <td>
+                        <span t-field="design.des_gmail"/>
+                    </td>
+                    <td>
+                        <span t-field="design.des_price"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <template id="report_select_vehicle">
+        <div></div>
+        <h4>Vehicle report:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Model Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-set="vehicles" t-value="order.mapped('select_vehicle_ids')"/>
+                <tr t-foreach="vehicles" t-as="vehicle">
+                    <td>
+                        <span t-field="vehicle.comp_name"/>
+                    </td>
+                    <td>
+                        <span t-field="vehicle.model"/>
+                    </td>
+                    <td>
+                        <span t-field="vehicle.veh_price"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <template id="report_custom">
+        <div></div>
+        <h4>Custom report:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>user discription</th>
+                    <th>Coustomizer</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span t-field="order.user_discrip"/>
+                    </td>
+                    <t t-set="offers" t-value="order.mapped('offer_ids')"/>
+                    <t t-foreach="offers" t-as="offer">
+                        <t t-if="offer.status=='accepted'">
+                            <td>
+                                <span t-field="offer.partner_id"/>
+                            </td>
+                            <td>
+                                <span t-field="offer.price"/>
+                            </td>
+                        </t>
+                    </t>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+</odoo>

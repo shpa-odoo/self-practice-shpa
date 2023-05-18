@@ -1,0 +1,57 @@
+<odoo>
+    <record id="autoalter_offer_action" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">autoalter.offer</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="autoalter_offer_view_tree" model="ir.ui.view">
+        <field name="name">autoalter.offer.tree</field>
+        <field name="model">autoalter.offer</field>
+        <field name="arch" type="xml">
+            <tree string="Custom Offers" expand="1" decoration-success="status=='accepted'" decoration-danger="status=='refused'">
+                <field name="price"/>
+                <field name="partner_id"/>
+                <button name="action_accept" title="Accept" type="object" icon="fa-check" attrs="{'invisible':[('status','!=',False)]}"/>
+                <button name="action_refuse" title="Refuse" type="object" icon="fa-close" attrs="{'invisible':[('status','!=',False)]}"/>
+                <field name="status" invisible="1"/>
+                <field name="exp"/>
+                <field name="type" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <record id="autoalter_offer_view_form" model="ir.ui.view">
+        <field name="name">autoalter.offer.form</field>
+        
+        <field name="model">autoalter.offer</field>
+        
+        <field name="arch" type="xml">
+            <form string="Custom Offers">
+                <!--<header>
+                    <button name="action_accept" type="object" icon="fa-check"/>
+                    <button name="action_refuse" type="object" icon="fa-close"/>
+                </header> wil not work in tree form-->
+                <sheet>
+                    <group> 
+                        <field name="price"/>
+                        <field name="partner_id"/>
+                        <field name="status"/> 
+                        <field name="exp"/>
+                        <field name="type" widget="many2many_tags"/>  
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="autoalter_offer_view_search" model="ir.ui.view"> 
+        <field name="name">autoalter.offer.search</field>
+        <field name="model">autoalter.offer</field>
+        <field name="arch" type="xml">
+            <search string="Search..">
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="status"/>   
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -33,7 +33,7 @@
                                     type="action" icon="fa-bars">
                                 <div class="o_stat_info">
                                     <span class="o_stat_value">
-                                        <field name="order_count"/>
+                                        <field name="or_count"/>
                                     </span>
                                     <span class="o_stat_text">
                                         order
@@ -60,33 +60,13 @@
                             <field name="cust_exp"/>
                             <field name="cust_typ_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
-                        
-                        <group>
-                            
-                            
-                            <field name="order_ids">
-                                <tree>
-                                    <field name="o_email"/>
-                                    <field name="user_discrip"/>
-                                    <field name="stages" invisible="1"/>
-                                    <field name="price_order_ids" attr="{'invisible':[('stages','!=','send')]}">
-                                        <tree>
-                                            <field name="price"/>
-                                        </tree>
-                                    </field>
-                                    <!-- <field name="cust_price" attr="{'invisible':[('stages','=',False)],'editable':True}"/>
-                                    <field name="stages" invisible="1"/>    -->
-                                    <!--<field name="cust_price" attrs="{'invisible':[('order_ids','=',False)]}"/>-->
-                                    <!--<button name="action_select" title="Accept" type="object" icon="fa-check"/>
-                                    <button name="action_cancle" title="Refuse" type="object" icon="fa-close"/>-->
-                                </tree>
-                            </field>
-                            
-                        
-                        </group>
                     </div>
-                    
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                    <field name="activity_ids" />
+                </div>
             </form>
         </field>
     </record>

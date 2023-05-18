@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_autoalter_order_badge" model="ir.actions.report">
+        <field name="name">Order Badge</field>
+        <field name="model">autoalter.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">autoalter.report_autoalter_order</field>
+        <field name="report_file">autoalter.report_autoalter_order</field>
+        <field name="print_report_name">'Order - %s' % (object.seq_name or 'Attendee').replace('/','')</field>
+        <field name="binding_model_id" ref="autoalter.model_autoalter_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

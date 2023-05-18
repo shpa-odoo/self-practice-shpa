@@ -22,7 +22,7 @@ class AutoalterOrder(models.Model):
     
     user_discrip=fields.Char(string="Discription(design or modification)")
 
-    state=fields.Selection(selection=[('new','New'),('order','Order'),('address','Address'),('buy','Buy'),('canceled','Canceled')],
+    state=fields.Selection(selection=[('new','New'),('order','Order'),('buy','Buy'),('canceled','Canceled')],
         string="State",
         required=True,
 		copy=False,
@@ -30,7 +30,6 @@ class AutoalterOrder(models.Model):
         readonly=False,
 		store=True)
     stage_id2=fields.Selection(related="state")
-    select_cust_ids=fields.Many2many('autoalter.customizer',string="Select Customizer")
     select_design_ids=fields.Many2many('autoalter.design',string="Select Design")
     select_vehicle_ids=fields.Many2many('autoalter.vehicles',string="Select vehicles")
 
@@ -40,21 +39,14 @@ class AutoalterOrder(models.Model):
     buy_design=fields.Boolean(string="Design")
     buy_custom=fields.Boolean(string="Custom")
 
-    select_customer_id=fields.Many2one('res.partner',string="Customer")
+    select_customer_id=fields.Many2one('res.partner',string="Customer",required=True)
     customizer_sel_id=fields.Many2one('autoalter.customizer',string="change avail")
-    price_order_ids=fields.Many2many('autoalter.custprice',
-                                     compute="_compute_relation")
-   
-    cust_price=fields.Float(string="Expected Price")
-    stages=fields.Selection(selection=[('send','Send'),('recieve','Recieve')],
-        compute="_compute_send",
-        default=False,
-        store=True)
+    offer_ids = fields.One2many("autoalter.offer", "pof_id", string="Offer")
+
+    
     des_total_price=fields.Float(string="Design total price",
         default=0,
         compute="_compute_design")
-
-    
     veh_total_price=fields.Float(string="Vehicle total price",
         default=0,
         compute="_compute_vehicle")
@@ -64,7 +56,16 @@ class AutoalterOrder(models.Model):
         default=0,
         compute="_compute_total_p")
 
+    _sql_constraints=[
+		('check_ord_price','CHECK (veh_total_price>=0 and des_total_price>=0 and cust_total_price>=0 and total_price>=0)','Price must be positive.')
+	]
 
+    @api.ondelete(at_uninstall=False)
+    def _unlink_property(self):
+         for record in self:
+              if record.state not in ('new','canceled'):
+                  raise odoo.exceptions.AccessError("only orders with stage sold and cancle are deleted.")
+              
     @api.depends('select_design_ids.des_price')
     def _compute_design(self):
         x=0
@@ -78,10 +79,13 @@ class AutoalterOrder(models.Model):
         for record in self.select_vehicle_ids:
             x=x+record.veh_price
         self.veh_total_price=x
+
     @api.depends('veh_total_price','cust_total_price','des_total_price')
     def _compute_total_p(self):
         for record in self:
             record.total_price=record.veh_total_price+record.cust_total_price+record.des_total_price
+            if record.total_price != 0:
+                record.state="order"
 
     def action_buy(self):
         for record in self:
@@ -95,26 +99,19 @@ class AutoalterOrder(models.Model):
                 if record.state=="buy":
                     raise odoo.exceptions.UserError('Sold properties can not be canceled')
                 else:
-                    record.state="canceled"
-
-    @api.depends('select_cust_ids')
-    def _compute_send(self):
-        for record in self:
-            if record.select_cust_ids:
-                record.stages="send"
-            if record.cust_price:
-                record.stages="recieve"
-                
+                    record.state="canceled"            
             
     @api.model
     def create(self,vals):
         vals['seq_name'] = self.env['ir.sequence'].next_by_code('autoalter.order')
         return super(AutoalterOrder,self).create(vals)
     
-    @api.depends('cust_price')
-    def _compute_relation(self):
-        custo=self.env['autoalter.customizer'].browse(self.env.context.get('active_id'))
-        for record in self:
-            record.price_order_ids.price=record.cust_price
-            record.price_order_ids.id_order=record.id
-            record.price_order_ids.id_cust=custo
+    def action_add_offer(self):
+        return {
+			'type': 'ir.actions.act_window',
+            'res_model': 'autoalter.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+	    	'name': 'Wizard',
+    	}       
+    

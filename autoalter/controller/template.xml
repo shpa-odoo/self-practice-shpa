@@ -1,0 +1,206 @@
+<odoo>
+    
+    <template id="index">
+         <t t-call="website.layout">
+            <t t-set="title">Vehicles</t>
+            <div class="oe_structure">
+                <style>
+                    .ratio {
+                        position: relative;
+                        width: 100%;
+                    }
+
+                    .ratio-1x1 {
+                        padding-bottom: 5%;
+                    }
+
+                    .ratio > * {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                </style>
+                <div class="container" style="padding:3em 0">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+                        <t t-foreach="vehicles" t-as="vehicle">
+                            <div class="col">
+                                <a t-attf-href="/autoalter/vehicles/{{ slug(vehicle) }}" class="text-decoration-none">
+                                    <div class="card">
+                                        <div class="ratio ratio-1x1">
+                                            <img t-attf-src="data:image/png;base64,#{vehicle.vehicle_img}" alt="Vehicle Image" class="card-img-top" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><t t-esc="vehicle.model" /></h5>
+                                            <p class="card-text">
+                                                <b>Price:</b> <t t-esc="vehicle.veh_price" />
+                                            </p>
+                                            <p class="card-text">
+                                                <b>Company Name:</b> <t t-esc="vehicle.comp_name" />
+                                            </p>
+                                            <p class="card-text">
+                                                <b>Engine Type:</b> <t t-esc="vehicle.engine_type" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>                
+            </div>
+        </t>
+    </template>
+
+    <template id="design_list">
+         <t t-call="website.layout">
+            <t t-set="title">Designs</t>
+            <div class="oe_structure">
+                <div class="container py-5">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <t t-foreach="designs" t-as="design">
+                            <div class="col">
+                                <a t-attf-href="/autoalter/designs/{{ slug(design) }}" class="text-decoration-none">
+                                    <div class="card h-100">
+                                        <img t-attf-src="data:image/png;base64,#{design.design_img}" class="card-img-top" alt="Design Image" style="object-fit: cover; height: 200px;"/>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><t t-esc="design.design_name"/></h5>
+                                            <p class="card-text mb-0"><b>Price:</b> <t t-esc="design.des_price"/></p>
+                                            <p class="card-text"><b>Design by:</b> <t t-esc="design.design_name_id.cust_name"/></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="customizer_list">
+         <t t-call="website.layout">
+            <t t-set="title">Customizers</t>
+            <div class="oe_structure">
+                <div class="container py-5">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <t t-foreach="customizers" t-as="customizer">
+                            <div class="col">
+                                <a t-attf-href="/autoalter/customizer/{{ slug(customizer) }}" class="text-decoration-none">
+                                    <div class="card h-100">
+                                        <div class="ratio ratio-1x1">
+                                            <img t-attf-src="data:image/png;base64,#{customizer.cust_img}" class="card-img-top" alt="Design Image"/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><t t-esc="customizer.cust_name"/></h5>
+                                            <p class="card-text mb-0"><b>Experience:</b> <t t-esc="customizer.cust_exp"/></p>
+                                            <p class="card-text"><b>Email:</b> <t t-esc="customizer.cust_emial"/></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <style>
+                    .ratio {
+                        position: relative;
+                        width: 100%;
+                    }
+
+                    .ratio-1x1 {
+                        padding-bottom: 5%;
+                    }
+
+                    .ratio > * {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+
+    <template id="website_vehicle_view">
+    <t t-call="website.layout">
+        <div class="oe_structure container-fluid py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><t t-esc="vehicle.model"/></h2>
+                        <div class="d-flex align-items-center my-4">
+                            <b>Engine Type:</b>
+                            <p class="ms-2 mb-0"><t t-esc="vehicle.engine_type"/></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <b>Price:</b>
+                            <p class="ms-2 mb-0"><t t-esc="vehicle.veh_price"/></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img t-attf-src="data:image/png;base64,#{vehicle.vehicle_img}" class="img-fluid border border-dark rounded-3 p-3" alt="Vehicle Image" style="max-height: 500px; max-width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+    <template id="website_design_view">
+        <t t-call="website.layout">
+            <section class="container mt-5">
+                <div class="row">
+                    <div class="col-8 mx-auto">
+                        <div class="card p-4 shadow-lg">
+                            <div class="row">
+                                <div class="col-md-5 text-center mb-3 mb-md-0">
+                                    <img t-attf-src="data:image/png;base64,#{design.design_img}" class="img-fluid rounded" alt="Design Image"/>
+                                </div>
+                                <div class="col-md-7 d-flex flex-column justify-content-center">
+                                    <h2 class="mb-4"><t t-esc="design.design_name"/></h2>
+                                    <p class="fs-4 mb-4"><b>Design By:</b> <t t-esc="design.design_name_id.cust_name"/></p>
+                                    <p class="fs-4 mb-4"><b>Price:</b> <t t-esc="design.des_price"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="website_customizer_view">
+    <t t-call="website.layout">
+        <div class="oe_structure" >
+            <div class="container mt-5 mb-5 text-center" style="padding: 20px;">
+                <div style="background-color: #f0f0f0; padding: 20px; width:75%;" class="shadow-lg">
+                    <h2>
+                        <span t-field="customizer.cust_name"/>
+                    </h2>
+                    <div class="d-flex justify-content-evenly">
+                        <div class="me-3">
+                            <img t-attf-src="data:image/png;base64,#{customizer.cust_img}" width="300px" alt="Customizer Image"/>
+                        </div>
+                        <div>
+                            <p><b>Experience:</b> <t t-esc="customizer.cust_exp"/></p>
+                            <p><b>Email:</b> <t t-esc="customizer.cust_emial"/></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+
+</odoo>
